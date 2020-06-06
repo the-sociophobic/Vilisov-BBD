@@ -17,12 +17,11 @@ const fragShader = `
 
   void main() {
     vec2 pos = gl_FragCoord.xy / u_resolution.xy - 1.0;
-    float alpha = clamp(pow(abs(pos.x) * pos.x * pos.x + abs(pos.y) * pos.y * pos.y, 0.5), 0.0, 1.0);
+    float alpha = clamp(pow(pow(abs(pos.x), 2.25) + pow(abs(pos.y), 2.25), 0.5) / 1.35, 0.0, 1.0);
 
     vec4 color = texture2D( tDiffuse, vUv );
     vec3 backgroundColor = vec3(0.5, 0.5, 0.5);
     color.rgb = color.rgb * (1.0 - alpha) + backgroundColor * alpha;
-    color.rgb = color.rgb * color.a + backgroundColor * (1.0 - color.a);
     gl_FragColor = vec4(color.rgb, 1.0);
   }
 `

@@ -344,7 +344,7 @@ UnrealBloomPass.prototype = Object.assign( Object.create( Pass.prototype ), {
 						diffuseSum += (sample1 + sample2) * w;\
 						weightSum += 2.0 * w;\
 					}\
-					gl_FragColor = vec4(diffuseSum/weightSum, 0.25);\n\
+					gl_FragColor = vec4(diffuseSum/weightSum, 0.1);\n\
 				}"
 		} );
 

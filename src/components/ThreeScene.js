@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 
 import Scene from '~/src/libs/engines/3d/Scene'
-import Lowpoly from '~/src/libs/engines/3d/units/Lowpoly'
+import Character from '~/src/libs/engines/3d/units/Character'
+import Landscape from '~/src/libs/engines/3d/units/Landscape'
+import Coins from '~/src/libs/engines/3d/units/Coins'
 import Lights from '~/src/libs/engines/3d/units/Lights'
 import VignettePostprocessing from '~/src/libs/engines/3d/units/VignettePostprocessing'
 import FilmGrainPostprocessing from '~/src/libs/engines/3d/units/FilmGrainPostprocessing'
@@ -18,16 +20,20 @@ export default class ThreeScene extends Component {
 
     this.scene = new Scene({
       units: {
-        Lowpoly: {
-          unit: Lowpoly,
+        Character: {
+          unit: Character,
+          disabled: false,
+        },
+        Landscape: {
+          unit: Landscape,
+          disabled: false,
+        },
+        Coins: {
+          unit: Coins,
           disabled: false,
         },
         Lights: {
           unit: Lights,
-          disabled: false,
-        },
-        VignettePostprocessing: {
-          unit: VignettePostprocessing,
           disabled: false,
         },
         FilmGrainPostprocessing: {
@@ -38,6 +44,10 @@ export default class ThreeScene extends Component {
           unit: BloomPostprocessing,
           disabled: false,
         },
+        // VignettePostprocessing: {
+        //   unit: VignettePostprocessing,
+        //   disabled: false,
+        // },
         EasterEgg: {
           unit: EasterEgg,
           disabled: false,

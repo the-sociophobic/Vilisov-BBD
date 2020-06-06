@@ -10,24 +10,24 @@ export default class Lowpoly extends Unit {
 
     const { scene, THREE } = props
 
-    this.light0 = new THREE.HemisphereLight( 0xffffff, 0x444444, 0.75 )
-    this.light0.position.set( 0, lightDistanceToModel, 0 )
-    scene.add( this.light0 )
-    this.light1 = new THREE.HemisphereLight( 0xffffff, 0x444444, 0.55 )
+    // this.light0 = new THREE.HemisphereLight( 0xffffff, 0x444444, 0.75 )
+    // this.light0.position.set( 0, lightDistanceToModel, 0 )
+    // scene.add( this.light0 )
+    this.light1 = new THREE.HemisphereLight( 0xffffff, 0x444444, 0.95 )
     this.light1.position.set( 0, -lightDistanceToModel, 0 )
     scene.add( this.light1 )
     
-    this.light2 = new THREE.DirectionalLight( 0x7701ee, .75 )
+    this.light2 = new THREE.DirectionalLight( 0xee21ee, 1.25 )
     this.light2.position.set( 0, lightDistanceToModel, 0 )
     this.light2.castShadow = true
     scene.add( this.light2 )
 
-    this.light3 = new THREE.DirectionalLight( 0x00cc0f, .65 )
+    this.light3 = new THREE.DirectionalLight( 0xaa55ee, .95 )
     this.light3.position.set( -20, -lightDistanceToModel, 0 )
     this.light3.castShadow = true
     scene.add( this.light3 )
 
-    this.light4 = new THREE.DirectionalLight( 0xff0000, .65 )
+    this.light4 = new THREE.DirectionalLight( 0x0055ff, .95 )
     this.light4.position.set( -20, -lightDistanceToModel, 0 )
     this.light4.castShadow = true
     scene.add( this.light4 )

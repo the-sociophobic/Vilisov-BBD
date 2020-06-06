@@ -8,7 +8,7 @@ export default class TransitionsHandler extends Unit {
     this.transitions = []
   }
 
-  animate = () => {
+  animateTransitions = () => {
     let unregisteredTransitions = []
     this.transitions.forEach((transition, index) => {
       if (transition.currentFrame === transition.numberOfFrames)
@@ -25,22 +25,25 @@ export default class TransitionsHandler extends Unit {
         transition.currentFrame++
       }
     })
-    unregisteredTransitions.forEach(transitionIndex =>
+    unregisteredTransitions.forEach(transitionIndex => {
+      this.transitions[transitionIndex].onComplete()
+
       this.transitions = [
         ...this.transitions.slice(0, transitionIndex),
         ...this.transitions.slice(transitionIndex + 1)
       ]
-    )
+    })
   }
 
-  registerTransition = (variable, value, numberOfFrames = 10, timingFuntion = "none") => {
+  registerTransition = props => {
     this.transitions.push({
-      variable: variable,
-      value: value,
-      initialValue: variable.clone(),
-      numberOfFrames: numberOfFrames,
+      variable: props.variable,
+      value: props.value,
+      initialValue: props.variable.clone(),
+      numberOfFrames: props.numberOfFrames || 10,
       currentFrame: 0,
-      timingFuntion: timingFuntion,
+      timingFuntion: props.timingFuntion || "none",
+      onComplete: props.onComplete || (() => {}),
     })
   }
 

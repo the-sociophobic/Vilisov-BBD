@@ -7,7 +7,7 @@ import transitionHandler from '~/src/libs/utils/handlers/transitionHandler'
 import inputHandler from '~/src/libs/utils/handlers/inputHandler'
 
 
-const targetToCamera = 30
+const targetToCamera = -15
 const maxFrameNumber = 5000
 
 var sceneVariables = {
@@ -55,7 +55,7 @@ export default class Scene extends
       1000
     )
     this.scene.controls = new THREE.OrbitControls(this.scene.camera, this.scene.renderer.domElement)
-    // this.scene.controls.enabled = false
+    this.scene.controls.enabled = false
     this.scene.camera.position.z = targetToCamera
     this.scene.controls.update()
 
@@ -91,14 +91,15 @@ export default class Scene extends
     const {
       composer,
       controls,
-      frameNumber,
       units,
     } = this.scene
 
     Object.keys(units)
       .forEach(unitName =>
         units[unitName].animate({
-          frameNumber: frameNumber,
+          THREE: THREE,
+          ...this.scene,
+          input: this.input,
           maxFrameNumber: maxFrameNumber,
         }))
 
@@ -112,10 +113,9 @@ export default class Scene extends
   initUnits = () => {
     const props = {
       THREE: THREE,
-      renderer: this.scene.renderer,
-      scene: this.scene.scene,
-      camera: this.scene.camera,
-      composer: this.scene.composer,
+      ...this.scene,
+      input: this.input,
+      maxFrameNumber: maxFrameNumber,
     }
 
     Object.keys(this.props.units)

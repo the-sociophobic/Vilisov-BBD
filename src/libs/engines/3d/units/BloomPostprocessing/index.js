@@ -8,16 +8,17 @@ export default class BloomPostprocessing extends Unit {
 
     const {
       renderer,
-      composer
+      composer,
+      THREE,
     } = props
 
-    composer.addPass(
-      new UnrealBloomPass(
-        new THREE.Vector2(renderer.getSize().x, renderer.getSize().y),
-        .5,
-        .1,
-        .85
-      ))
+    this.pass = new UnrealBloomPass(
+      new THREE.Vector2(renderer.getSize(new THREE.Vector2()).x, renderer.getSize(new THREE.Vector2()).y),
+      1.5,
+      1.5,
+      0.01,
+    )
+    composer.addPass(this.pass)
   }
 
   animate = props => {}
