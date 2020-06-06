@@ -1,5 +1,4 @@
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { RenderPass, EffectComposer } from 'postprocessing'
 import THREE from '~/src/libs/engines/3d/three'
 import classes from 'multiple-extend'
 
@@ -55,7 +54,7 @@ export default class Scene extends
       1000
     )
     this.scene.controls = new THREE.OrbitControls(this.scene.camera, this.scene.renderer.domElement)
-    // this.scene.controls.enabled = false
+    this.scene.controls.enabled = false
     this.scene.camera.position.z = targetToCamera
     this.scene.controls.update()
 
@@ -91,6 +90,7 @@ export default class Scene extends
     const {
       composer,
       controls,
+      clock,
       frameNumber,
       units,
     } = this.scene
@@ -103,7 +103,7 @@ export default class Scene extends
         }))
 
     controls.update()
-    composer.render()
+    composer.render(clock.getDelta)
 
     this.frameId = window.requestAnimationFrame(this.animate)
   }
