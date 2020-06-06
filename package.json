@@ -5,12 +5,16 @@
   "author": "the_sociophobic",
   "license": "ISC",
   "dependencies": {
+    "clamp": "^1.0.1",
     "libs": "^0.1.2",
     "little-loader": "^0.2.0",
+    "multiple-extend": "^0.1.2",
     "react": "^16.0.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
+    "regenerator-runtime": "^0.13.5",
     "resize-observer-polyfill": "^1.5.1",
+    "src": "^1.1.2",
     "three": "^0.115.0"
   },
   "devDependencies": {

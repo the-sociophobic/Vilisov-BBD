@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 import ThreeScene from './components/ThreeScene'
-import myScene from './libs/myScene'
-
-// import './styles/index.sass'
 
 
 class App extends Component {
@@ -11,15 +8,8 @@ class App extends Component {
     super(props)
   }
   
-  render() {
-    return (
-      <ThreeScene
-        // ref={this.context.threeSceneRef}
-        myScene={myScene}
-        // {...props}
-      />
-    )
-  }
+  render = () =>
+    <ThreeScene/>
 }
 
 export default App
