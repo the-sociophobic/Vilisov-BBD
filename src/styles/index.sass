@@ -9,85 +9,99 @@
 $font-gray: #C4C4C4
 $font-light-gray: #B7B7B7
 
-#three-root
-  *
-    font-family: 'RF-Dewi', sans-serif
-    color: $font-light-gray
+*
+  font-family: 'RF-Dewi', sans-serif
+  color: $font-light-gray
+
+
+.Viewer
   background-color: #444444
   position: fixed
   width: 100vw
   height: 100vh
   top: 0
   left: 0
-  .Viewer
-    position: relative
+  canvas
     width: 100%
     height: 100%
-    canvas
-      width: 100%
-      height: 100%
-    #zone-joystick
-      @media screen and ( min-width: 1025px )
-        display: none
-      width: 100%
-      height: 40%
-      position: absolute
-      right: 0
-      bottom: 0
-  .text-area
+  #zone-joystick
+    @media screen and ( min-width: 1025px )
+      display: none
+    width: 100%
+    height: 40%
     position: absolute
-    top: 0
-    left: 0
-    display: flex
-    flex-direction: row
-    justify-content: space-around
-    align-items: center
-    width: 100%
-    height: 100%
+    right: 0
+    bottom: 0
+.text-area
+  position: absolute
+  top: 0
+  left: 0
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  width: 100%
+  height: 100%
+  @media screen and ( max-width: 1024px )
+    height: 60%
+    flex-direction: column
+    justify-content: flex-start
+  &__left-column,
+  &__right-column
+    // height: 100%
+    width: 35%
+    @media screen and ( max-width: 1200px )
+      width: 70%
+    @media screen and ( max-width: 800px )
+      width: calc(100% - 30px)
+  &__left-column
     @media screen and ( max-width: 1024px )
-      height: 60%
-      flex-direction: column
-      justify-content: flex-start
-    &__left-column,
-    &__right-column
-      // height: 100%
-      width: 35%
-      @media screen and ( max-width: 1200px )
-        width: 70%
-      @media screen and ( max-width: 800px )
-        width: calc(100% - 30px)
-    &__left-column
+      order: 2
+      width: 50%
+    @media screen and ( max-width: 800px )
+      width: 70%
+    &__text
+      color: $font-gray
+      text-align: center
+      font-size: 24px
+      margin-bottom: 50vh
+      @media screen and ( max-width: 1500px )
+        font-size: 16px
       @media screen and ( max-width: 1024px )
-        order: 2
-        width: 50%
+        font-size: 11px
+        margin-bottom: 0
       @media screen and ( max-width: 800px )
-        width: 70%
-      &__text
-        color: $font-gray
-        text-align: center
-        font-size: 24px
-        margin-bottom: 50vh
-        @media screen and ( max-width: 1500px )
-          font-size: 16px
-        @media screen and ( max-width: 1024px )
-          font-size: 11px
-          margin-bottom: 0
-        @media screen and ( max-width: 800px )
-          font-size: 8px
-    &__right-column
+        font-size: 8px
+  &__right-column
+    @media screen and ( max-width: 1024px )
+      order: 1
+    .h1
+      font-family: 'Monument', sans-serif
+      font-weight: 900
+      color: rgba(155, 255, 183, 0.5)
+      text-align: center
+      font-size: 111px
+      @media screen and ( max-width: 1500px )
+        font-size: 50px
       @media screen and ( max-width: 1024px )
-        order: 1
-      .h1
-        font-family: 'Monument', sans-serif
-        font-weight: 900
-        color: rgba(155, 255, 183, 0.5)
-        text-align: center
-        font-size: 111px
-        @media screen and ( max-width: 1500px )
-          font-size: 50px
-        @media screen and ( max-width: 1024px )
-          font-size: 60px
-        @media screen and ( max-width: 800px )
-          font-size: 37px
-          
+        font-size: 60px
+      @media screen and ( max-width: 800px )
+        font-size: 37px
+        
+
+.buttons
+  position: fixed
+  bottom: 0
+  left: 0
+  opacity: .5
+  width: 50%
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  z-index: 10000
+  &__item
+    cursor: pointer
+    font-size: 10px
+    padding: 10px
+    background-color: black
 

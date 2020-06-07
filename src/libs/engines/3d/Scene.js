@@ -1,10 +1,11 @@
+import THREE from 'libs/engines/3d/three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
-import THREE from '~/src/libs/engines/3d/three'
 import classes from 'multiple-extend'
 
-import transitionHandler from '~/src/libs/utils/handlers/transitionHandler'
-import inputHandler from '~/src/libs/utils/handlers/inputHandler'
+import transitionHandler from 'libs/utils/handlers/transitionHandler'
+import inputHandler from 'libs/utils/handlers/inputHandler'
 
 
 const targetToCamera = -15
@@ -55,7 +56,7 @@ export default class Scene extends
       0.1,
       1000
     )
-    this.scene.controls = new THREE.OrbitControls(this.scene.camera, this.scene.renderer.domElement)
+    this.scene.controls = new OrbitControls(this.scene.camera, this.scene.renderer.domElement)
     this.scene.controls.enabled = false
     this.scene.camera.position.z = targetToCamera
     this.scene.controls.update()
@@ -146,4 +147,9 @@ export default class Scene extends
     this.scene.unitsToggled = !this.scene.unitsToggled
     this.initUnits()
   }
+
+  // toggleUnit = unitName => {
+  //   // if (this.scene[unitName].enabled)
+  //   console.log(this.scene.scene.children)
+  // }
 }

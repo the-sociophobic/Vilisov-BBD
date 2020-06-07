@@ -1,17 +1,17 @@
-import THREE from '~/src/libs/engines/3d/three'
-import Unit from '~/src/libs/engines/3d/Unit'
-import modelLoader from '~/src/libs/engines/3d/modelLoader'
-import textureLoader from '~/src/libs/engines/3d/textureLoader'
+import THREE from 'libs/engines/3d/three'
+import Unit from 'libs/engines/3d/Unit'
+import modelLoader from 'libs/engines/3d/modelLoader'
+import textureLoader from 'libs/engines/3d/textureLoader'
 
-import treeModel from '~/src/libs/engines/3d/models/tree.glb'
-import planeTextureImage from '~/src/libs/engines/3d/textures/blackgrid.jpg'
+import treeModel from 'libs/engines/3d/models/tree.glb'
+import planeTextureImage from 'libs/engines/3d/textures/blackgrid.jpg'
 
 
 const treeAmount = 10
 const ArenaRadius = 10
 const xAxis = new THREE.Vector3(1, 0, 0)
 const yAxis = new THREE.Vector3(0, 1, 0)
-const zAxis = new THREE.Vector3(0, 0, 1)
+// const zAxis = new THREE.Vector3(0, 0, 1)
 
 
 export default class Character extends Unit {

@@ -1,7 +1,7 @@
-import THREE from '~/src/libs/engines/3d/three'
-import Unit from '~/src/libs/engines/3d/Unit'
-import modelLoader from '~/src/libs/engines/3d/modelLoader'
-import AstronautModel from '~/src/libs/engines/3d/models/Astronaut.glb'
+import THREE from 'libs/engines/3d/three'
+import Unit from 'libs/engines/3d/Unit'
+import modelLoader from 'libs/engines/3d/modelLoader'
+import AstronautModel from 'libs/engines/3d/models/Astronaut.glb'
 
 
 const ArenaRadius = 10
@@ -9,7 +9,7 @@ const minPosition = new THREE.Vector3(-ArenaRadius, -ArenaRadius, -ArenaRadius)
 const maxPosition = new THREE.Vector3( ArenaRadius,  ArenaRadius,  ArenaRadius)
 const xAxis = new THREE.Vector3(1, 0, 0)
 const yAxis = new THREE.Vector3(0, 1, 0)
-const zAxis = new THREE.Vector3(0, 0, 1)
+// const zAxis = new THREE.Vector3(0, 0, 1)
 
 
 export default class Character extends Unit {

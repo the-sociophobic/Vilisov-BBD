@@ -1,34 +1,45 @@
 {
-  "name": "logo_parcel",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "the_sociophobic",
-  "license": "ISC",
+  "homepage": "https://the-sociophobic.github.io/Vilisov-BBD",
+  "name": "vilisov-bbd",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "clamp": "^1.0.1",
-    "libs": "^0.1.2",
-    "little-loader": "^0.2.0",
+    "gh-pages": "^3.0.0",
     "multiple-extend": "^0.1.2",
     "nipplejs": "^0.8.5",
-    "react": "^16.0.0",
-    "react-dom": "^16.11.0",
-    "react-helmet": "^5.2.1",
-    "regenerator-runtime": "^0.13.5",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0",
+    "react-scripts": "3.4.1",
     "resize-observer-polyfill": "^1.5.1",
-    "src": "^1.1.2",
-    "three": "^0.115.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0-0",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/preset-react": "^7.0.0",
-    "cssnano": "^4.1.10",
-    "sass": "^1.22.12"
+    "three": "^0.117.1"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "dev": "parcel example.html",
-    "build": "parcel build ./src/index.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

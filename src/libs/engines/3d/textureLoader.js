@@ -1,6 +1,4 @@
-import THREE from '~/src/libs/engines/3d/three'
-
-const regeneratorRuntime = require("regenerator-runtime")
+import THREE from 'libs/engines/3d/three'
 
 
 export default async file =>

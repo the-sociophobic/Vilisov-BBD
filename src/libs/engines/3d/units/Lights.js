@@ -1,4 +1,4 @@
-import Unit from '~/src/libs/engines/3d/Unit'
+import Unit from 'libs/engines/3d/Unit'
 
 
 const lightDistanceToModel = 15

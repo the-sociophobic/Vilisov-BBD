@@ -1,5 +1,5 @@
 import { UnrealBloomPass } from './customUnrealBloomPass'
-import Unit from '~/src/libs/engines/3d/Unit'
+import Unit from 'libs/engines/3d/Unit'
 
 
 export default class BloomPostprocessing extends Unit {

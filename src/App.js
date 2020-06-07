@@ -1,19 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import ThreeScene from './components/ThreeScene'
 import TextArea from './components/TextArea'
 
+import 'styles/index.sass'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-  
-  render = () =>
-    <>
-      <ThreeScene/>
-      <TextArea/>
-    </>
-}
+
+const App = () =>
+  <>
+    <ThreeScene/>
+    <TextArea/>
+  </>
 
 export default App

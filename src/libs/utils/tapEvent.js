@@ -1,3 +1,6 @@
+import THREE from 'libs/engines/3d/three'
+
+
 export default (element, fn, startEvent = 'touchstart', endEvent = 'touchend', ms = 200) => {
   var timer,
     touchStarted = false,

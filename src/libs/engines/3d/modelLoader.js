@@ -1,7 +1,5 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
-const regeneratorRuntime = require("regenerator-runtime")
-
 
 export default async model =>
   new Promise((res, rej) =>

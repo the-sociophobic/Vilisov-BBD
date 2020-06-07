@@ -1,17 +1,17 @@
-import classes from 'multiple-extend'
-import THREE from '~/src/libs/engines/3d/three'
-import Unit from '~/src/libs/engines/3d/Unit'
-import transitionHandler from '~/src/libs/utils/handlers/transitionHandler'
-import modelLoader from '~/src/libs/engines/3d/modelLoader'
+// import classes from 'multiple-extend'
+import THREE from 'libs/engines/3d/three'
+// import Unit from 'libs/engines/3d/Unit'
+import transitionHandler from 'libs/utils/handlers/transitionHandler'
+import modelLoader from 'libs/engines/3d/modelLoader'
 
-import coinModel from '~/src/libs/engines/3d/models/coin.glb'
+import coinModel from 'libs/engines/3d/models/coin.glb'
 
 
 const coinAmount = 25
 const ArenaRadius = 10
-const xAxis = new THREE.Vector3(1, 0, 0)
-const yAxis = new THREE.Vector3(0, 1, 0)
-const zAxis = new THREE.Vector3(0, 0, 1)
+// const xAxis = new THREE.Vector3(1, 0, 0)
+// const yAxis = new THREE.Vector3(0, 1, 0)
+// const zAxis = new THREE.Vector3(0, 0, 1)
 
 var dummy = new THREE.Object3D()
 

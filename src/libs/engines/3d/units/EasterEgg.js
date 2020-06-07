@@ -1,6 +1,7 @@
-import Unit from '~/src/libs/engines/3d/Unit'
-
-import tapEvent from '~/src/libs/utils/tapEvent'
+import THREE from 'libs/engines/3d/three'
+import Unit from 'libs/engines/3d/Unit'
+import isTouchDevice from 'libs/utils/isTouchDevice'
+import tapEvent from 'libs/utils/tapEvent'
 
 
 const clicksNeeded = 20

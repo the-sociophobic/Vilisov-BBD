@@ -1,7 +1,7 @@
 import nipplejs from 'nipplejs'
 import clamp from 'clamp'
-import THREE from '~/src/libs/engines/3d/three'
-import isTouchDevice from '~/src/libs/utils/isTouchDevice'
+import THREE from 'libs/engines/3d/three'
+import isTouchDevice from 'libs/utils/isTouchDevice'
 
 
 var inputVariables = {
@@ -89,8 +89,6 @@ export default class inputHandler {
       // size: 200,
     }
     this.joystickManager = nipplejs.create(options)
-
-    console.log(this.joystickManager)
 
     this.joystickManager.processOnMove = e => this.input.move.set(-e.offsetX / 1000, 0, -e.offsetY / 1000)
     this.joystickManager.processOnEnd = e => this.input.move.set(0, 0, 0)
