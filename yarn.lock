@@ -1455,6 +1455,11 @@ multiple-extend@^0.1.2:
   dependencies:
     putil-merge "^3.5.1"
 
+nipplejs@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/nipplejs/-/nipplejs-0.8.5.tgz#9b16bd1fc70afadc35b09355b86dad65d863bafa"
+  integrity sha512-2G7warzUh4jIdmzSIDRCeXJUl/QrZyJ0QwFgI0V1lM34HLNsIqEX6uY0NY4V3wBDHNsub3me1cbFb/FJpWE/5g==
+
 node-releases@^1.1.29:
   version "1.1.30"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.30.tgz#35eebf129c63baeb6d8ddeda3c35b05abfd37f7f"

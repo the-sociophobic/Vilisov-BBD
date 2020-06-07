@@ -48,10 +48,10 @@ export default class ThreeScene extends Component {
         //   unit: VignettePostprocessing,
         //   disabled: false,
         // },
-        EasterEgg: {
-          unit: EasterEgg,
-          disabled: false,
-        },
+        // EasterEgg: {
+        //   unit: EasterEgg,
+        //   disabled: false,
+        // },
       }
     })
   }
@@ -81,5 +81,7 @@ export default class ThreeScene extends Component {
     <div
       className="Viewer"
       ref={this.viewerRef}
-    />
+    >
+      <div id="zone-joystick" />
+    </div>
 }

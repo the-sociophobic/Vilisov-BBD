@@ -1,13 +1,14 @@
-import THREE from '~/src/libs/engines/3d/three'
+import nipplejs from 'nipplejs'
 import clamp from 'clamp'
+import THREE from '~/src/libs/engines/3d/three'
 import isTouchDevice from '~/src/libs/utils/isTouchDevice'
 
 
 var inputVariables = {
-  scroll: {
-    alphaX: 0,
-    alphaY: 0,
-  },
+  // scroll: {
+  //   alphaX: 0,
+  //   alphaY: 0,
+  // },
   mouse: {
     alphaX: 0,
     alphaY: 0,    
@@ -65,15 +66,44 @@ export default class inputHandler {
 
     this.input = inputVariables
 
-    if (isTouchDevice()) {
-      this.handleScroll()
-      this.scrollUpdateInterval = setInterval(() => this.handleScroll(), 5)
+    if (isTouchDevice()) {  
+      // this.handleScroll()
+      // this.scrollUpdateInterval = setInterval(() => this.handleScroll(), 5)
     }
     else {
       window.addEventListener('mousemove', this.handleMouseMove, false)
       window.addEventListener('keydown', this.handleKeyDown, false)
       window.addEventListener('keyup', this.handleKeyUp, false)
     }
+  }
+
+  inputHandlerInit = () => {
+    const zoneJoystick = document.getElementById('zone-joystick')
+    var options = {
+      zone: zoneJoystick,
+      mode: 'static',
+      position: {
+        x: Math.round(window.innerWidth / 4 * 3),
+        y: Math.round(window.innerHeight / 5 * 4),
+      },
+      // size: 200,
+    }
+    this.joystickManager = nipplejs.create(options)
+
+    console.log(this.joystickManager)
+
+    this.joystickManager.processOnMove = e => this.input.move.set(-e.offsetX / 1000, 0, -e.offsetY / 1000)
+    this.joystickManager.processOnEnd = e => this.input.move.set(0, 0, 0)
+
+    // this.joystickManager.on('added', (e, nipple) => {
+    //   nipple.on('start move end dir plain', e => {
+    //     console.log(e)
+    //     console.log(nipple)
+    //     // this.move.set()
+    //   })
+    // }).on('removed', (e, nipple) => {
+    //   nipple.off('start move end dir plain')
+    // })
   }
 
   handleScroll = e => {
@@ -127,7 +157,8 @@ export default class inputHandler {
 
   dispose = () => {
     if (isTouchDevice())
-      clearInterval(this.scrollUpdateInterval)
+      ;
+      // clearInterval(this.scrollUpdateInterval)
     else
       window.removeEventListener('mousemove', this.handleMouseMove, false)
   }

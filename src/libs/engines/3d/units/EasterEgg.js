@@ -86,9 +86,9 @@ export default class EasterEgg extends Unit {
     }
   }
 
-  animate = () => {
-    const { scene } = this.props
-    var time = Date.now() * 0.000005
+  animate = props => {
+    const { scene, clock } = this.props
+    var time = clock.getDelta()
 
     for (var i = 0; i < scene.children.length; i++) {
       var object = scene.children[ i ]

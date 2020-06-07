@@ -19,7 +19,6 @@ var sceneVariables = {
 
   clock: new THREE.Clock(),
   frameNumber: 0,
-  time: 0,
 
   units: {},
   unitsToggled: false,
@@ -35,6 +34,8 @@ export default class Scene extends
   }
 
   init = ViewerDiv => {
+    this.inputHandlerInit()
+
     const W = ViewerDiv.clientWidth
     const H = ViewerDiv.clientHeight
 
@@ -85,7 +86,6 @@ export default class Scene extends
   }
 
   animate = () => {
-    this.scene.time = Date.now() * 0.000005
     this.scene.frameNumber = (this.scene.frameNumber + 1) % maxFrameNumber
 
     const {
