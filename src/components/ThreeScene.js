@@ -21,6 +21,9 @@ export default class ThreeScene extends Component {
       FilmGrainPostprocessing: true,
       BloomPostprocessing: true,
       VignettePostprocessing: true,
+
+      check: false,
+      params: [0, 0, 0]
     }
 
     this.viewerRef = new React.createRef()
@@ -51,10 +54,10 @@ export default class ThreeScene extends Component {
         //   unit: FilmGrainPostprocessing,
         //   disabled: false,
         // },
-        // BloomPostprocessing: {
-        //   unit: BloomPostprocessing,
-        //   disabled: false,
-        // },
+        BloomPostprocessing: {
+          unit: BloomPostprocessing,
+          disabled: false,
+        },
         // VignettePostprocessing: {
         //   unit: VignettePostprocessing,
         //   disabled: false,
@@ -72,6 +75,8 @@ export default class ThreeScene extends Component {
       .observe(this.viewerRef.current)
 
     this.scene.init(this.viewerRef.current)
+
+    setTimeout(() => this.setState({check: true}), 1000)
   }
 
   componentWillUnmount = () => {
@@ -97,7 +102,7 @@ export default class ThreeScene extends Component {
         <div id="zone-joystick" />
       </div>
       <div className="buttons">
-        {Object.keys(this.state).map((key, index) =>
+        {/* {Object.keys(this.state).map((key, index) =>
           <div
             className="buttons__item"
             onClick={() => {
@@ -108,6 +113,20 @@ export default class ThreeScene extends Component {
           >
             {key} {this.state[key] ? "on" : "off"}
           </div>
+        )} */}
+        {this.scene.scene.units.BloomPostprocessing && this.state.check &&
+          this.scene.scene.units.BloomPostprocessing.params.map((param, index) =>
+            <input
+              className="buttons__item"
+              value={this.state.params[index]}
+              onChange={e => {
+                this.scene.scene.units.BloomPostprocessing.params[index] = e.target.value
+                let newParams = this.state.params.slice()
+                newParams[index] = e.target.value
+
+                this.setState({params: this.scene.scene.units.BloomPostprocessing.params})
+              }}
+            />
         )}
       </div>
     </>

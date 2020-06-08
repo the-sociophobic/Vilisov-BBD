@@ -8649,6 +8649,11 @@ postcss@^7, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, po
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
+postprocessing@^6.14.0:
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/postprocessing/-/postprocessing-6.14.0.tgz#8a3f69fbe899ecc89f9ebfda84c8ae6d53a56201"
+  integrity sha512-uqty2wpwvFSk8J2La1zoPj4cSBvZCHJfU6vNphvIYMMSupOw4kRwdTnGvv+tLzr53EybofPELOTbwdLvKLjxeg==
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"

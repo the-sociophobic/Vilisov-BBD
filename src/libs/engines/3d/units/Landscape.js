@@ -1,3 +1,4 @@
+import clamp from 'clamp'
 import THREE from 'libs/engines/3d/three'
 import Unit from 'libs/engines/3d/Unit'
 import modelLoader from 'libs/engines/3d/modelLoader'
@@ -7,7 +8,7 @@ import treeModel from 'libs/engines/3d/models/tree.glb'
 import planeTextureImage from 'libs/engines/3d/textures/blackgrid.jpg'
 
 
-const treeAmount = 100
+const treeAmount = 75
 const ArenaRadius = 300
 const xAxis = new THREE.Vector3(1, 0, 0)
 const yAxis = new THREE.Vector3(0, 1, 0)
@@ -45,15 +46,15 @@ export default class Character extends Unit {
 
     this.trees = []
     for (let i = 0; i < treeAmount; i++) {
+      let randomX = Math.max(Math.random(), .1) * Math.sign(Math.random() - .5)
+      let randomZ = Math.max(Math.random(), .1) * Math.sign(Math.random() - .5)
+
       treePos
         .set(
-          ArenaRadius * Math.max(.2, Math.random()) * 2 - ArenaRadius,
+          ArenaRadius * randomX,
           ArenaRadius / 8 * Math.random(),
-          ArenaRadius * Math.max(.2, Math.random()) * 2 - ArenaRadius
+          ArenaRadius * randomZ,
         )
-        // .set(0, ArenaRadius * (1 + Math.random()), 0)
-        // .applyAxisAngle(xAxis, (.25 + Math.random()) * Math.PI / 2)
-        // .applyAxisAngle(yAxis, Math.random() * Math.PI * 2)
 
       let scale = (1 + Math.random()) * 10
       dummy.scale.set(scale, scale, scale)
