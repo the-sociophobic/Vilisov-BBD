@@ -7,7 +7,7 @@ export default async model =>
       .load(
         model,
         gltf =>
-          res(gltf.scene),
+          res(gltf),
         progress =>
           console.log((progress.loaded / progress.total * 100) + '% loaded'),
         error =>

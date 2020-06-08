@@ -36,7 +36,7 @@ export default class Character extends Unit {
     this.plane.rotateX(Math.PI / 2)
     this.props.scene.add( this.plane )
 
-    const treeMesh = await modelLoader(treeModel)
+    const treeMesh = (await modelLoader(treeModel)).scene
     var dummy = new THREE.Object3D()
     var treePos = new THREE.Vector3()
 

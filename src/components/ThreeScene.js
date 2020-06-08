@@ -22,7 +22,6 @@ export default class ThreeScene extends Component {
       BloomPostprocessing: true,
       VignettePostprocessing: true,
 
-      check: false,
       params: [0, 0, 0]
     }
 
@@ -76,7 +75,7 @@ export default class ThreeScene extends Component {
 
     this.scene.init(this.viewerRef.current)
 
-    setTimeout(() => this.setState({check: true}), 1000)
+    setTimeout(() => this.setState({params: this.scene.scene.units.BloomPostprocessing.params}), 1250)
   }
 
   componentWillUnmount = () => {
@@ -114,7 +113,7 @@ export default class ThreeScene extends Component {
             {key} {this.state[key] ? "on" : "off"}
           </div>
         )} */}
-        {this.scene.scene.units.BloomPostprocessing && this.state.check &&
+        {this.scene.scene.units.BloomPostprocessing &&
           this.scene.scene.units.BloomPostprocessing.params.map((param, index) =>
             <input
               className="buttons__item"
