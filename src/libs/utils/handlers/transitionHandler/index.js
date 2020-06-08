@@ -26,7 +26,7 @@ export default class TransitionsHandler extends Unit {
       }
     })
     unregisteredTransitions.forEach(transitionIndex => {
-      this.transitions[transitionIndex].onComplete()
+      this.transitions[transitionIndex] && this.transitions[transitionIndex].onComplete()
 
       this.transitions = [
         ...this.transitions.slice(0, transitionIndex),

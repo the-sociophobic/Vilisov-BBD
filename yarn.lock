@@ -7078,6 +7078,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+mouse-speed@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/mouse-speed/-/mouse-speed-2.0.1.tgz#2195acbe8ee77ebeb32d74ae32c528173dbaf56d"
+  integrity sha512-NeOmpVctrBVk0+gWXcqVef+Z6S64lhs0O6AI+BFW5k/7K7v3FJbap669YfkkE4cDfRGeRGGT/Ykv4e0I3dE1Lg==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -10423,6 +10428,18 @@ text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+three.textsprite@^20.0.0:
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/three.textsprite/-/three.textsprite-20.0.0.tgz#8f49bec557cdc917d4a8b8a51b60c7d43f875ac0"
+  integrity sha512-4ctiwpATotDqJvK1MxtOk0nvE/4BO+KlcFGzzvrtP8TN9rBFuzkhhDpCNgQxShkVi10JyITlUAJw03jCGL5z3A==
+  dependencies:
+    three.texttexture "^20.0.0"
+
+three.texttexture@^20.0.0:
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/three.texttexture/-/three.texttexture-20.0.0.tgz#33ddfd051ade5bcf8b47b6dd312eae4ab614d078"
+  integrity sha512-eRH2GvWeOC+1B86PrXZNQsLszjXvqvRtFHSs76cvVODISVg/bskPCqrDbhPws/5sxYCYE0+EPYyU2MiF4EbqLA==
 
 three@^0.117.1:
   version "0.117.1"

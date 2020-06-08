@@ -7,12 +7,11 @@ import treeModel from 'libs/engines/3d/models/tree.glb'
 import planeTextureImage from 'libs/engines/3d/textures/blackgrid.jpg'
 
 
-const treeAmount = 10
-const ArenaRadius = 10
+const treeAmount = 100
+const ArenaRadius = 300
 const xAxis = new THREE.Vector3(1, 0, 0)
 const yAxis = new THREE.Vector3(0, 1, 0)
 // const zAxis = new THREE.Vector3(0, 0, 1)
-
 
 export default class Character extends Unit {
   constructor(props) {
@@ -25,7 +24,7 @@ export default class Character extends Unit {
     var planeTexture = await textureLoader(planeTextureImage)
     planeTexture.wrapS = THREE.RepeatWrapping
     planeTexture.wrapT = THREE.RepeatWrapping
-    planeTexture.repeat.set( 3, 3 )
+    planeTexture.repeat.set( 27, 27 )
     this.plane = new THREE.Mesh(
       new THREE.PlaneGeometry( 2 * ArenaRadius, 2 * ArenaRadius, 1, 1 ),
       new THREE.MeshBasicMaterial({
@@ -44,16 +43,26 @@ export default class Character extends Unit {
     this.treeInstance.instanceMatrix.setUsage( THREE.DynamicDrawUsage )
     this.props.scene.add(this.treeInstance)
 
+    this.trees = []
     for (let i = 0; i < treeAmount; i++) {
       treePos
-        .set(0, ArenaRadius * (1 + Math.random()), 0)
-        .applyAxisAngle(xAxis, (.25 + Math.random()) * Math.PI / 2)
-        .applyAxisAngle(yAxis, Math.random() * Math.PI * 2)
+        .set(
+          ArenaRadius * Math.max(.2, Math.random()) * 2 - ArenaRadius,
+          ArenaRadius / 8 * Math.random(),
+          ArenaRadius * Math.max(.2, Math.random()) * 2 - ArenaRadius
+        )
+        // .set(0, ArenaRadius * (1 + Math.random()), 0)
+        // .applyAxisAngle(xAxis, (.25 + Math.random()) * Math.PI / 2)
+        // .applyAxisAngle(yAxis, Math.random() * Math.PI * 2)
 
-      let scale = (1 + Math.random()) * 2
+      let scale = (1 + Math.random()) * 10
       dummy.scale.set(scale, scale, scale)
       dummy.position.copy(treePos)
-      dummy.rotation.y = (.5 + Math.random() * 3) * Math.PI / 2
+      this.trees.push({
+        position: (new THREE.Vector3()).copy(dummy.position),
+        scale: scale,
+      })
+      dummy.rotation.y = (-.5 + Math.random()) * Math.PI / 2
       dummy.rotation.x = (.5 + Math.random()) * Math.PI / 2
       dummy.updateMatrix()
       this.treeInstance.setMatrixAt(i, dummy.matrix)
