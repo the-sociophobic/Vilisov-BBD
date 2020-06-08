@@ -1,27 +1,29 @@
 {
   "files": {
-    "main.css": "/Vilisov-BBD/static/css/main.f318056e.chunk.css",
-    "main.js": "/Vilisov-BBD/static/js/main.1c7de0f5.chunk.js",
-    "main.js.map": "/Vilisov-BBD/static/js/main.1c7de0f5.chunk.js.map",
+    "main.css": "/Vilisov-BBD/static/css/main.57155b5c.chunk.css",
+    "main.js": "/Vilisov-BBD/static/js/main.b8659c26.chunk.js",
+    "main.js.map": "/Vilisov-BBD/static/js/main.b8659c26.chunk.js.map",
     "runtime-main.js": "/Vilisov-BBD/static/js/runtime-main.cb668a5e.js",
     "runtime-main.js.map": "/Vilisov-BBD/static/js/runtime-main.cb668a5e.js.map",
-    "static/js/2.22ad7901.chunk.js": "/Vilisov-BBD/static/js/2.22ad7901.chunk.js",
-    "static/js/2.22ad7901.chunk.js.map": "/Vilisov-BBD/static/js/2.22ad7901.chunk.js.map",
+    "static/js/2.2e3182b6.chunk.js": "/Vilisov-BBD/static/js/2.2e3182b6.chunk.js",
+    "static/js/2.2e3182b6.chunk.js.map": "/Vilisov-BBD/static/js/2.2e3182b6.chunk.js.map",
     "index.html": "/Vilisov-BBD/index.html",
-    "precache-manifest.1ab43d704f56fb4a725388ede9453499.js": "/Vilisov-BBD/precache-manifest.1ab43d704f56fb4a725388ede9453499.js",
+    "precache-manifest.3633859a759f9f1c8cb81588bbc45f7f.js": "/Vilisov-BBD/precache-manifest.3633859a759f9f1c8cb81588bbc45f7f.js",
     "service-worker.js": "/Vilisov-BBD/service-worker.js",
-    "static/css/main.f318056e.chunk.css.map": "/Vilisov-BBD/static/css/main.f318056e.chunk.css.map",
-    "static/js/2.22ad7901.chunk.js.LICENSE.txt": "/Vilisov-BBD/static/js/2.22ad7901.chunk.js.LICENSE.txt",
-    "static/media/Astronaut.glb": "/Vilisov-BBD/static/media/Astronaut.f3152ab1.glb",
+    "static/css/main.57155b5c.chunk.css.map": "/Vilisov-BBD/static/css/main.57155b5c.chunk.css.map",
+    "static/js/2.2e3182b6.chunk.js.LICENSE.txt": "/Vilisov-BBD/static/js/2.2e3182b6.chunk.js.LICENSE.txt",
+    "static/media/Astronaut.glb": "/Vilisov-BBD/static/media/Astronaut.cfa34173.glb",
     "static/media/index.sass": "/Vilisov-BBD/static/media/RF-Dewi-Expanded-Semibold.15a2a887.otf",
+    "static/media/VoxelGuy.glb": "/Vilisov-BBD/static/media/VoxelGuy.54dc6cca.glb",
+    "static/media/Woman.glb": "/Vilisov-BBD/static/media/Woman.c9ed6341.glb",
     "static/media/blackgrid.jpg": "/Vilisov-BBD/static/media/blackgrid.3d7d5793.jpg",
     "static/media/coin.glb": "/Vilisov-BBD/static/media/coin.e8a0d624.glb",
     "static/media/tree.glb": "/Vilisov-BBD/static/media/tree.46613934.glb"
   },
   "entrypoints": [
     "static/js/runtime-main.cb668a5e.js",
-    "static/js/2.22ad7901.chunk.js",
-    "static/css/main.f318056e.chunk.css",
-    "static/js/main.1c7de0f5.chunk.js"
+    "static/js/2.2e3182b6.chunk.js",
+    "static/css/main.57155b5c.chunk.css",
+    "static/js/main.b8659c26.chunk.js"
   ]
 }
