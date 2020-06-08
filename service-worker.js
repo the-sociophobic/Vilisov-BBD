@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Vilisov-BBD/precache-manifest.3ff26b324f4cc16e4080017c6bfcceec.js"
+  "/Vilisov-BBD/precache-manifest.d79de2eb9ad86c72bf307c08ea2bc29f.js"
 );
 
 self.addEventListener('message', (event) => {
