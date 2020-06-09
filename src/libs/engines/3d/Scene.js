@@ -2,10 +2,8 @@ import THREE from 'libs/engines/3d/three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
-import classes from 'multiple-extend'
 
 import transitionHandler from 'libs/utils/handlers/transitionHandler'
-import inputHandler from 'libs/utils/handlers/inputHandler'
 
 
 const targetToCamera = -15
@@ -26,8 +24,7 @@ var sceneVariables = {
 }
 
 
-export default class Scene extends
-  classes(transitionHandler, inputHandler) {
+export default class Scene extends transitionHandler {
 
   constructor(props) {
     super(props)
@@ -35,8 +32,6 @@ export default class Scene extends
   }
 
   init = ViewerDiv => {
-    this.inputHandlerInit()
-
     const W = ViewerDiv.clientWidth
     const H = ViewerDiv.clientHeight
 
@@ -100,7 +95,7 @@ export default class Scene extends
         units[unitName].animate({
           THREE: THREE,
           ...this.scene,
-          input: this.input,
+          input: this.scene.units.Controls,
           maxFrameNumber: maxFrameNumber,
         }))
 
@@ -115,7 +110,7 @@ export default class Scene extends
     const props = {
       THREE: THREE,
       ...this.scene,
-      input: this.input,
+      input: this.scene.units.Controls,
       maxFrameNumber: maxFrameNumber,
     }
 
@@ -123,8 +118,11 @@ export default class Scene extends
       .forEach(unitName => {
         const unit = this.props.units[unitName]
 
-        if (!unit.disabled ^ this.scene.unitsToggled)
-        this.scene.units[unitName] = new unit.unit(props)
+        if (!unit.disabled ^ this.scene.unitsToggled) {
+          this.scene.units[unitName] = new unit.unit(props)
+          this.scene.units[unitName].init &&
+            this.scene.units[unitName].init()
+        }
       })
   }
 

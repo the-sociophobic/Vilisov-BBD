@@ -7,6 +7,7 @@ import Landscape from 'libs/engines/3d/units/Landscape'
 import Coins from 'libs/engines/3d/units/Coins'
 import Lights from 'libs/engines/3d/units/Lights'
 import Fog from 'libs/engines/3d/units/Fog'
+import Controls from 'libs/engines/3d/units/Controls'
 import VignettePostprocessing from 'libs/engines/3d/units/VignettePostprocessing'
 import FilmGrainPostprocessing from 'libs/engines/3d/units/FilmGrainPostprocessing'
 import BloomPostprocessing from 'libs/engines/3d/units/BloomPostprocessing'
@@ -47,6 +48,10 @@ export default class ThreeScene extends Component {
         },
         Fog: {
           unit: Fog,
+          disabled: false,
+        },
+        Controls: {
+          unit: Controls,
           disabled: false,
         },
         // FilmGrainPostprocessing: {

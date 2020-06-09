@@ -1,9 +1,13 @@
+import THREE from 'libs/engines/3d/three'
+import Unit from 'libs/engines/3d/Unit'
 import nipplejs from 'nipplejs'
 import clamp from 'clamp'
 import isTouchDevice from 'libs/utils/isTouchDevice'
 
 
-var inputVariables = {
+const yAxis = new THREE.Vector3(0, 1, 0)
+
+const initialThis = {
   // scroll: {
   //   alphaX: 0,
   //   alphaY: 0,
@@ -12,6 +16,8 @@ var inputVariables = {
     alphaX: 0,
     alphaY: 0,
   },
+
+  move: new THREE.Vector3(),
   moveFlags: {
     up: [
       {
@@ -54,16 +60,15 @@ var inputVariables = {
       }
     ],
   }
-  // cameraAngle: new THREE.Vector2(0, 0),
-  // move: new THREE.Vector3(0, 0, 0),
 }
 
 
-export default class inputHandler {
+export default class Controls extends Unit {
   constructor(props) {
-    this.props = props
+    super(props)
 
-    this.input = inputVariables
+    Object.keys(initialThis)
+      .forEach(key => this[key] = initialThis[key])
 
     if (isTouchDevice()) {  
       // this.handleScroll()
@@ -71,18 +76,12 @@ export default class inputHandler {
     }
     else {
       window.addEventListener('mousemove', this.handleMouseMove, false)
-      // this.speed = new MouseSpeed()
-      // this.speed.init(() => {
-      //   this.input.cameraAngle.setX((this.input.cameraAngle.x - Math.sign(this.speed.speedX) * Math.abs(this.speed.speedX) ** 1.5 / window.innerWidth / 2) % (Math.PI * 2))
-      //   this.input.cameraAngle.setY(clamp(this.input.cameraAngle.y + Math.sign(this.speed.speedY) * Math.abs(this.speed.speedY) ** 1.5 / window.innerHeight / 2, 0, Math.PI / 4))
-      // })
-
       window.addEventListener('keydown', this.handleKeyDown, false)
       window.addEventListener('keyup', this.handleKeyUp, false)
     }
   }
 
-  inputHandlerInit = () => {
+  init = () => {
     const zoneJoystick = document.getElementById('zone-joystick')
     var options = {
       zone: zoneJoystick,
@@ -95,18 +94,13 @@ export default class inputHandler {
     }
     this.joystickManager = nipplejs.create(options)
 
-    this.joystickManager.processOnMove = e => this.input.move.set(-e.offsetX / 1000, 0, -e.offsetY / 1000)
-    this.joystickManager.processOnEnd = e => this.input.move.set(0, 0, 0)
-
-    // this.joystickManager.on('added', (e, nipple) => {
-    //   nipple.on('start move end dir plain', e => {
-    //     console.log(e)
-    //     console.log(nipple)
-    //     // this.move.set()
-    //   })
-    // }).on('removed', (e, nipple) => {
-    //   nipple.off('start move end dir plain')
-    // })
+    this.joystickManager[0].on('move', (e, data) => {
+      this.move.set(-data.force / 7, 0, 0)
+        .applyAxisAngle(yAxis, data.angle.radian)
+    })
+    this.joystickManager[0].on('end', e => {
+      this.move.set(0, 0, 0)
+    })
   }
 
   // handleScroll = e => {
@@ -115,6 +109,24 @@ export default class inputHandler {
 
   //   this.scroll.alphaY = clamp(getBodyScrollTop() / threeSceneElement.offsetHeight * .5, 0, .5)
   // }
+
+  animate = props => {
+    const getDirectionState = direction =>
+      direction
+        .map(key => key.pressed)
+        .reduce((a, b) => a || b)
+      ? 1 : 0
+
+    if (!isTouchDevice())
+      this.move
+        .set(
+          getDirectionState(this.moveFlags.right) - getDirectionState(this.moveFlags.left),
+          0,
+          getDirectionState(this.moveFlags.up) - getDirectionState(this.moveFlags.down))
+        .normalize()
+        .multiplyScalar(.35)
+  }
+
   
   handleMouseMove = e => {
     if (!e.pageX || !e.pageY) {
@@ -122,21 +134,21 @@ export default class inputHandler {
       return
     }
   
-    this.input.mouse.alphaX = -clamp(e.pageX / window.innerWidth - .5, -.5, .5)
-    this.input.mouse.alphaY = clamp(e.pageY / window.innerHeight - .5, -.5, .5)
+    this.mouse.alphaX = -clamp(e.pageX / window.innerWidth - .5, -.5, .5)
+    this.mouse.alphaY = clamp(e.pageY / window.innerHeight - .5, -.5, .5)
   }
 
   handleKeyDown = e =>
-    Object.keys(this.input.moveFlags)
+    Object.keys(this.moveFlags)
       .forEach(direction =>
-        this.input.moveFlags[direction]
+        this.moveFlags[direction]
           .forEach(key =>
-            key.pressed = (key.code === e.keyCode)))
+            key.pressed |= (key.code === e.keyCode)))
 
   handleKeyUp = e =>
-    Object.keys(this.input.moveFlags)
+    Object.keys(this.moveFlags)
       .forEach(direction =>
-        this.input.moveFlags[direction]
+        this.moveFlags[direction]
           .forEach(key =>
             key.pressed &= !(key.code === e.keyCode)))
 

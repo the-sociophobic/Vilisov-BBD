@@ -1,6 +1,7 @@
-import clamp from 'clamp'
 import THREE from 'libs/engines/3d/three'
 import Unit from 'libs/engines/3d/Unit'
+import isTouchDevice from 'libs/utils/isTouchDevice'
+
 import modelLoader from 'libs/engines/3d/modelLoader'
 import AstronautModel from 'libs/engines/3d/models/Astronaut.glb'
 import VoxelGuyModel from 'libs/engines/3d/models/VoxelGuy.glb'
@@ -13,9 +14,8 @@ const minPosition = new THREE.Vector3(-ArenaRadius, -ArenaRadius, -ArenaRadius)
 const maxPosition = new THREE.Vector3( ArenaRadius,  ArenaRadius,  ArenaRadius)
 const xAxis = new THREE.Vector3(1, 0, 0)
 const yAxis = new THREE.Vector3(0, 1, 0)
-// const zAxis = new THREE.Vector3(0, 0, 1)
+const zAxis = new THREE.Vector3(0, 0, 1)
 
-var move = new THREE.Vector3(0, 0, 0)
 var nextPos = new THREE.Vector3(0, 0, 0)
 var cameraAngle = new THREE.Vector2(0, 0)
 var cameraToTarget = new THREE.Vector3()
@@ -23,12 +23,12 @@ var modelQuaternion = new THREE.Quaternion()
 
 const models = [
   {
-    file: AstronautModel,
-    scale: 1.25,
-  },
-  {
     file: VoxelGuyModel,
     scale: 5,
+  },
+  {
+    file: AstronautModel,
+    scale: 1.25,
   },
   {
     file: WomanModel,
@@ -51,7 +51,6 @@ export default class Character extends Unit {
     this.model = this.gtlf.scene
     this.mixer = new THREE.AnimationMixer( this.gtlf.scene )
     this.action = this.mixer.clipAction( this.gtlf.animations[ 0 ] )
-    console.log(this.action)
     this.action.play()
 
     this.model.scale.set(randomModel.scale, randomModel.scale, randomModel.scale)
@@ -63,17 +62,22 @@ export default class Character extends Unit {
     if (!this.model)
       return
 
-    cameraAngle.set(
-      props.input.mouse.alphaX * Math.PI * 1.5,
-      props.input.mouse.alphaY * Math.PI / 12
-      // (cameraAngle.x + props.input.mouse.alphaX / 7) % (Math.PI * 2),
-      // clamp(cameraAngle.y + props.input.mouse.alphaY / 15, 0, Math.PI / 8)
-    )
-
-    this.updateMove(props.input)
+    if (!isTouchDevice())
+      cameraAngle.set(
+        props.input.mouse.alphaX * Math.PI * 1.5,
+        props.input.mouse.alphaY * Math.PI / 12
+      )
+    else
+      cameraAngle.set(
+        props.input.move.z > 0 ?
+          props.input.move.angleTo(zAxis) / 1.5 * Math.sign(props.input.move.x)
+          :
+          (Math.PI - props.input.move.angleTo(zAxis)) / 1.5 * Math.sign(props.input.move.x),
+        -Math.PI / 16
+      )
 
     nextPos.copy(this.model.position)
-      .add(move.clone()
+      .add(props.input.move.clone()
         .applyAxisAngle(yAxis, cameraAngle.x))
     nextPos.clamp(minPosition, maxPosition)
 
@@ -90,13 +94,13 @@ export default class Character extends Unit {
 
     if (!collisionFlag) {
       this.model.position.copy(nextPos)
-      if (move.length() > .01)
+      if (props.input.move.length() > .01)
         this.mixer.update(props.clock.getDelta())
     }
 
     this.model.quaternion.slerp(
       modelQuaternion.setFromAxisAngle(yAxis, cameraAngle.x)
-      , .05)
+      , .025)
 
     cameraToTarget = (new THREE.Vector3(0, 0, -15))
       .applyAxisAngle(xAxis, cameraAngle.y)
@@ -106,20 +110,6 @@ export default class Character extends Unit {
     this.props.controls.target.setY(5)
     this.props.camera.position.copy(this.props.controls.target.clone().add(cameraToTarget))
   }
-
-  updateMove = input => {
-    const getDirectionState = direction =>
-      direction
-        .map(key => key.pressed)
-        .reduce((a, b) => a || b)
-      ? 1 : 0
-
-    move.setX(
-      (getDirectionState(input.moveFlags.right) - getDirectionState(input.moveFlags.left)) * .35)
-    move.setZ(
-      (getDirectionState(input.moveFlags.up) - getDirectionState(input.moveFlags.down)) * .35)
-  }
-
 
   dispose = () => {}
 }

@@ -20,12 +20,12 @@ export default class Lowpoly extends Unit {
     
     this.light2 = new THREE.DirectionalLight( 0xee55ee, 2.95 )
     this.light2.position.set( lightDistanceToModel, 7, 0 )
-    this.light2.castShadow = true
+    // this.light2.castShadow = true
     scene.add( this.light2 )
 
     this.light3 = new THREE.DirectionalLight( 0x77bbee, 2.95 )
     this.light3.position.set( lightDistanceToModel * Math.cos(Math.PI * 2 / 3), 7, lightDistanceToModel * Math.sin(Math.PI * 2 / 3) )
-    this.light3.castShadow = true
+    // this.light3.castShadow = true
     scene.add( this.light3 )
 
     // this.light4 = new THREE.DirectionalLight( 0x0088ff, 2.95 )
