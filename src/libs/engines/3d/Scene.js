@@ -1,7 +1,8 @@
 import THREE from 'libs/engines/3d/three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+// import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
+// import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { EffectComposer, RenderPass } from 'postprocessing'
 
 import transitionHandler from 'libs/utils/handlers/transitionHandler'
 
@@ -36,10 +37,11 @@ export default class Scene extends transitionHandler {
     const H = ViewerDiv.clientHeight
 
     //ADD RENDERER
-    this.scene.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    const optimise = W > 1200
+    this.scene.renderer = new THREE.WebGLRenderer({ antialias: !optimise, alpha: true })
     this.scene.renderer.setClearColor(0x000000, 0)
     this.scene.renderer.setSize(W, H)
-    this.scene.renderer.setPixelRatio(window.devicePixelRatio)
+    this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
     this.scene.renderer.shadowMap.enabled = true
 
     ViewerDiv.appendChild(this.scene.renderer.domElement)
@@ -74,11 +76,13 @@ export default class Scene extends transitionHandler {
     if (!this.scene.renderer || !this.scene.camera)
       return
 
+    const optimise = W > 1200
+
     this.scene.camera.aspect = W / H
     this.scene.camera.updateProjectionMatrix()
 
     this.scene.renderer.setSize(W, H)
-    this.scene.renderer.setPixelRatio(window.devicePixelRatio)
+    this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
   }
 
   animate = () => {
@@ -88,6 +92,7 @@ export default class Scene extends transitionHandler {
       composer,
       controls,
       units,
+      clock,
     } = this.scene
 
     Object.keys(units)
@@ -100,7 +105,8 @@ export default class Scene extends transitionHandler {
         }))
 
     controls.update()
-    composer.render()
+    // composer.render()
+    composer.render(clock.getDelta())
 
     this.frameId = window.requestAnimationFrame(this.animate)
   }

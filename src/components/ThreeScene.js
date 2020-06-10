@@ -8,8 +8,8 @@ import Coins from 'libs/engines/3d/units/Coins'
 import Lights from 'libs/engines/3d/units/Lights'
 import Fog from 'libs/engines/3d/units/Fog'
 import Controls from 'libs/engines/3d/units/Controls'
-import VignettePostprocessing from 'libs/engines/3d/units/VignettePostprocessing'
-import FilmGrainPostprocessing from 'libs/engines/3d/units/FilmGrainPostprocessing'
+// import VignettePostprocessing from 'libs/engines/3d/units/VignettePostprocessing'
+// import FilmGrainPostprocessing from 'libs/engines/3d/units/FilmGrainPostprocessing'
 import BloomPostprocessing from 'libs/engines/3d/units/BloomPostprocessing'
 // import EasterEgg from 'libs/engines/3d/units/EasterEgg'
 
@@ -18,13 +18,7 @@ export default class ThreeScene extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      FilmGrainPostprocessing: true,
-      BloomPostprocessing: true,
-      VignettePostprocessing: true,
-
-      params: [0, 0, 0]
-    }
+    this.state = {}
 
     this.viewerRef = new React.createRef()
 
@@ -79,8 +73,6 @@ export default class ThreeScene extends Component {
       .observe(this.viewerRef.current)
 
     this.scene.init(this.viewerRef.current)
-
-    setTimeout(() => this.setState({params: this.scene.scene.units.BloomPostprocessing.params}), 1250)
   }
 
   componentWillUnmount = () => {
@@ -98,40 +90,10 @@ export default class ThreeScene extends Component {
   }
 
   render = () =>
-    <>
-      <div
-        className="Viewer"
-        ref={this.viewerRef}
-      >
-        <div id="zone-joystick" />
-      </div>
-      <div className="buttons">
-        {/* {Object.keys(this.state).map((key, index) =>
-          <div
-            className="buttons__item"
-            onClick={() => {
-              // this.scene.toggleUnit(key)
-              this.scene.scene.composer.passes[index + 1].enabled = !this.state[key]
-              this.setState({[key]: !this.state[key]})
-            }}
-          >
-            {key} {this.state[key] ? "on" : "off"}
-          </div>
-        )} */}
-        {this.scene.scene.units.BloomPostprocessing &&
-          this.scene.scene.units.BloomPostprocessing.params.map((param, index) =>
-            <input
-              className="buttons__item"
-              value={this.state.params[index]}
-              onChange={e => {
-                this.scene.scene.units.BloomPostprocessing.params[index] = e.target.value
-                let newParams = this.state.params.slice()
-                newParams[index] = e.target.value
-
-                this.setState({params: this.scene.scene.units.BloomPostprocessing.params})
-              }}
-            />
-        )}
-      </div>
-    </>
+    <div
+      className="Viewer"
+      ref={this.viewerRef}
+    >
+      <div id="zone-joystick" />
+    </div>
 }

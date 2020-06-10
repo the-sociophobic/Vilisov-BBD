@@ -17,9 +17,12 @@ const yAxis = new THREE.Vector3(0, 1, 0)
 const zAxis = new THREE.Vector3(0, 0, 1)
 
 var nextPos = new THREE.Vector3(0, 0, 0)
-var cameraAngle = new THREE.Vector2(0, 0)
+var cameraAngleX = 0
+var cameraAngleConrolsApplied = new THREE.Vector2(0, 0)
+var moveCameraAngleApplied = new THREE.Vector3()
 var cameraToTarget = new THREE.Vector3()
 var modelQuaternion = new THREE.Quaternion()
+var tmpVector = new THREE.Vector3()
 
 const models = [
   {
@@ -61,24 +64,27 @@ export default class Character extends Unit {
   animate = props => {
     if (!this.model)
       return
+    
+    cameraAngleX +=
+      props.input.move.z > 0 ?
+        props.input.move.angleTo(zAxis) / 150 * Math.sign(props.input.move.x)
+        :
+        (Math.PI - props.input.move.angleTo(zAxis)) / 150 * Math.sign(props.input.move.x)
 
     if (!isTouchDevice())
-      cameraAngle.set(
-        props.input.mouse.alphaX * Math.PI * 1.5,
+      cameraAngleConrolsApplied.set(
+        props.input.mouse.alphaX * Math.PI * 1.5 + cameraAngleX,
         props.input.mouse.alphaY * Math.PI / 12
       )
     else
-      cameraAngle.set(
-        props.input.move.z > 0 ?
-          props.input.move.angleTo(zAxis) / 1.5 * Math.sign(props.input.move.x)
-          :
-          (Math.PI - props.input.move.angleTo(zAxis)) / 1.5 * Math.sign(props.input.move.x),
-        -Math.PI / 16
-      )
+      cameraAngleConrolsApplied.set(cameraAngleX, -Math.PI / 16)
+
+    moveCameraAngleApplied
+      .copy(props.input.move)
+        .applyAxisAngle(yAxis, cameraAngleConrolsApplied.x)
 
     nextPos.copy(this.model.position)
-      .add(props.input.move.clone()
-        .applyAxisAngle(yAxis, cameraAngle.x))
+      .add(moveCameraAngleApplied)
     nextPos.clamp(minPosition, maxPosition)
 
     let collisionFlag = false
@@ -98,17 +104,19 @@ export default class Character extends Unit {
         this.mixer.update(props.clock.getDelta())
     }
 
-    this.model.quaternion.slerp(
-      modelQuaternion.setFromAxisAngle(yAxis, cameraAngle.x)
-      , .025)
+    if (props.input.move.length() > 0)
+      this.model.quaternion.slerp(
+        modelQuaternion
+          .setFromUnitVectors(zAxis, moveCameraAngleApplied.normalize())
+        , .135)
 
     cameraToTarget = (new THREE.Vector3(0, 0, -15))
-      .applyAxisAngle(xAxis, cameraAngle.y)
-      .applyAxisAngle(yAxis, cameraAngle.x)
+      .applyAxisAngle(xAxis, cameraAngleConrolsApplied.y)
+      .applyAxisAngle(yAxis, cameraAngleConrolsApplied.x)
 
     this.props.controls.target.copy(this.model.position)
     this.props.controls.target.setY(5)
-    this.props.camera.position.copy(this.props.controls.target.clone().add(cameraToTarget))
+    this.props.camera.position.copy(tmpVector.copy(this.props.controls.target).add(cameraToTarget))
   }
 
   dispose = () => {}

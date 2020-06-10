@@ -124,7 +124,7 @@ export default class Controls extends Unit {
           0,
           getDirectionState(this.moveFlags.up) - getDirectionState(this.moveFlags.down))
         .normalize()
-        .multiplyScalar(.35)
+        .multiplyScalar(.55)
   }
 
   
