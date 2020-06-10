@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "56e2c747a8e1389944e81cc606d4a9cc",
+    "revision": "e25083bad471f72277e32d6697233248",
     "url": "/Vilisov-BBD/index.html"
   },
   {
-    "revision": "1ae6bab1873fa1f01f35",
+    "revision": "fcf64bbd16c088aad921",
     "url": "/Vilisov-BBD/static/css/main.760db960.chunk.css"
   },
   {
-    "revision": "5db48f90a611fa91c01c",
-    "url": "/Vilisov-BBD/static/js/2.8cf9f415.chunk.js"
+    "revision": "66962097242c7a2b8e81",
+    "url": "/Vilisov-BBD/static/js/2.979336f4.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/Vilisov-BBD/static/js/2.8cf9f415.chunk.js.LICENSE.txt"
+    "url": "/Vilisov-BBD/static/js/2.979336f4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1ae6bab1873fa1f01f35",
-    "url": "/Vilisov-BBD/static/js/main.906ecf62.chunk.js"
+    "revision": "fcf64bbd16c088aad921",
+    "url": "/Vilisov-BBD/static/js/main.316bca73.chunk.js"
   },
   {
     "revision": "a4811a330e66bb0cb865",
     "url": "/Vilisov-BBD/static/js/runtime-main.cb668a5e.js"
   },
   {
-    "revision": "cfa341738a46267c19012d7cc711a205",
-    "url": "/Vilisov-BBD/static/media/Astronaut.cfa34173.glb"
+    "revision": "ac9701ba357c298bb34b778abf639644",
+    "url": "/Vilisov-BBD/static/media/Astronaut.ac9701ba.glb"
   },
   {
     "revision": "3b24078346a6ae8b9caeca47834fcea9",
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Vilisov-BBD/static/media/RF-Dewi-Expanded-Semibold.15a2a887.otf"
   },
   {
-    "revision": "54dc6cca58043c83d65b3b5a6591adc6",
-    "url": "/Vilisov-BBD/static/media/VoxelGuy.54dc6cca.glb"
+    "revision": "3119f9c606df36f798352d5ee4eaed93",
+    "url": "/Vilisov-BBD/static/media/VoxelGuy.3119f9c6.glb"
   },
   {
     "revision": "c9ed6341c6c2428767894a15c971dbbf",
