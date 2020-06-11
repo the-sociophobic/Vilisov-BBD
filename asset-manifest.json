@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Vilisov-BBD/static/css/main.283ec711.chunk.css",
-    "main.js": "/Vilisov-BBD/static/js/main.038778da.chunk.js",
-    "main.js.map": "/Vilisov-BBD/static/js/main.038778da.chunk.js.map",
+    "main.js": "/Vilisov-BBD/static/js/main.27505493.chunk.js",
+    "main.js.map": "/Vilisov-BBD/static/js/main.27505493.chunk.js.map",
     "runtime-main.js": "/Vilisov-BBD/static/js/runtime-main.cb668a5e.js",
     "runtime-main.js.map": "/Vilisov-BBD/static/js/runtime-main.cb668a5e.js.map",
-    "static/js/2.979336f4.chunk.js": "/Vilisov-BBD/static/js/2.979336f4.chunk.js",
-    "static/js/2.979336f4.chunk.js.map": "/Vilisov-BBD/static/js/2.979336f4.chunk.js.map",
+    "static/js/2.ef54f04d.chunk.js": "/Vilisov-BBD/static/js/2.ef54f04d.chunk.js",
+    "static/js/2.ef54f04d.chunk.js.map": "/Vilisov-BBD/static/js/2.ef54f04d.chunk.js.map",
     "index.html": "/Vilisov-BBD/index.html",
-    "precache-manifest.9e4886a4c38fcfce1f2b7dcdb9eeb6ce.js": "/Vilisov-BBD/precache-manifest.9e4886a4c38fcfce1f2b7dcdb9eeb6ce.js",
+    "precache-manifest.53b7e7d4bb707f1d49544d8cb896fd12.js": "/Vilisov-BBD/precache-manifest.53b7e7d4bb707f1d49544d8cb896fd12.js",
     "service-worker.js": "/Vilisov-BBD/service-worker.js",
     "static/css/main.283ec711.chunk.css.map": "/Vilisov-BBD/static/css/main.283ec711.chunk.css.map",
-    "static/js/2.979336f4.chunk.js.LICENSE.txt": "/Vilisov-BBD/static/js/2.979336f4.chunk.js.LICENSE.txt",
+    "static/js/2.ef54f04d.chunk.js.LICENSE.txt": "/Vilisov-BBD/static/js/2.ef54f04d.chunk.js.LICENSE.txt",
     "static/media/Astronaut.glb": "/Vilisov-BBD/static/media/Astronaut.ac9701ba.glb",
     "static/media/index.sass": "/Vilisov-BBD/static/media/RF-Dewi-Expanded-Semibold.15a2a887.otf",
     "static/media/VoxelGuy.glb": "/Vilisov-BBD/static/media/VoxelGuy.3119f9c6.glb",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.cb668a5e.js",
-    "static/js/2.979336f4.chunk.js",
+    "static/js/2.ef54f04d.chunk.js",
     "static/css/main.283ec711.chunk.css",
-    "static/js/main.038778da.chunk.js"
+    "static/js/main.27505493.chunk.js"
   ]
 }
