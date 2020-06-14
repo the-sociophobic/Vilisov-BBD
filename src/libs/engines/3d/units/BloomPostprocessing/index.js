@@ -1,5 +1,5 @@
 // import { UnrealBloomPass } from './customUnrealBloomPass'
-import { BloomEffect, EffectComposer, EffectPass, RenderPass } from 'postprocessing'
+import { BloomEffect, EffectPass } from 'postprocessing'
 import Unit from 'libs/engines/3d/Unit'
 
 
@@ -8,22 +8,12 @@ export default class BloomPostprocessing extends Unit {
     super(props)
 
     const {
-      renderer,
       camera,
       composer,
-      THREE,
     } = props
 
-    // this.params = [
-    //   .5,
-    //   1,
-    //   1,
-    // ]
-    // this.pass = new UnrealBloomPass(
-    //   new THREE.Vector2(renderer.getSize(new THREE.Vector2()).x, renderer.getSize(new THREE.Vector2()).y),
-    //   ...this.params
-    // )
-    this.pass = new EffectPass(camera, new BloomEffect())
+    this.bloom = new BloomEffect()
+    this.pass = new EffectPass(camera, this.bloom)
     composer.addPass(this.pass)
   }
 

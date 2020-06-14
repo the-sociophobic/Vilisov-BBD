@@ -6,6 +6,8 @@ import modelLoader from 'libs/engines/3d/modelLoader'
 import AstronautModel from 'libs/engines/3d/models/Astronaut.glb'
 import VoxelGuyModel from 'libs/engines/3d/models/VoxelGuy.glb'
 import WomanModel from 'libs/engines/3d/models/Woman.glb'
+import footstep0 from 'sounds/footstep0.mp3'
+import footstep1 from 'sounds/footstep1.mp3'
 
 
 const ArenaRadius = 300
@@ -28,14 +30,17 @@ const models = [
   {
     file: VoxelGuyModel,
     scale: 5,
+    animationScale: 5,
   },
   {
     file: AstronautModel,
     scale: 1.25,
+    animationScale: 4.2,
   },
   {
     file: WomanModel,
     scale: 3,
+    animationScale: 3.8,
   },
 ]
 
@@ -45,6 +50,13 @@ export default class Character extends Unit {
     super(props)
 
     this.loadModel()
+
+    this.firstFlag = true
+
+    this.footstep0 = new Audio(footstep0)
+    this.footstep1 = new Audio(footstep1)
+    this.footstep0Interval = undefined
+    this.footstep1Interval = undefined
   }
 
   loadModel = async () => {
@@ -59,11 +71,55 @@ export default class Character extends Unit {
     this.model.scale.set(randomModel.scale, randomModel.scale, randomModel.scale)
 
     this.props.scene.add(this.model)
+
+    this.fadeMultiplier = 1
+  }
+
+  startStepsSounds = () => {
+    const interval = Math.round(1250 / this.mixer.timeScale)
+
+    if (!this.footstep0Interval) {
+      // this.footstep0.currentTime = 0
+      // this.footstep0.play()
+      this.footstep0Interval = setInterval(() => {
+        this.footstep0.currentTime = 0
+        this.footstep0.play()
+      }, interval)
+    }
+    if (!this.footstep1Interval && !this.footstep1Timeout) {
+      this.footstep1Timeout = setTimeout(() => {
+        // this.footstep1.currentTime = 0
+        // this.footstep1.play()
+        this.footstep1Interval = setInterval(() => {
+          this.footstep1.currentTime = 0
+          this.footstep1.play()
+        }, interval)
+      }, Math.round(interval / 2))
+    }
+  }
+  stopStepsSounds = () => {
+    if (this.footstep0Interval) {
+      clearInterval(this.footstep0Interval)
+      this.footstep0Interval = undefined
+    }
+    if (this.footstep1Interval) {
+      clearInterval(this.footstep1Interval)
+      this.footstep1Interval = undefined
+    }
+    if (this.footstep1Timeout) {
+      clearTimeout(this.footstep1Timeout)
+      this.footstep1Timeout = undefined
+    }
   }
 
   animate = props => {
     if (!this.model)
       return
+
+    if (this.firstFlag) {
+      this.firstFlag = false
+      this.mixer.timeScale *= props.input.moveSpeed
+    }
     
     cameraAngleX +=
       props.input.move.z > 0 ?
@@ -77,7 +133,7 @@ export default class Character extends Unit {
         props.input.mouse.alphaY * Math.PI / 12
       )
     else
-      cameraAngleConrolsApplied.set(cameraAngleX, -Math.PI / 16)
+      cameraAngleConrolsApplied.set(cameraAngleX, Math.PI / 16)
 
     moveCameraAngleApplied
       .copy(props.input.move)
@@ -100,9 +156,25 @@ export default class Character extends Unit {
 
     if (!collisionFlag) {
       this.model.position.copy(nextPos)
-      if (props.input.move.length() > .01)
+      if (props.input.move.length() > .01) {
+        this.startStepsSounds()
+        // this.mixer.existingAction(this.gtlf.animations[ 0 ]).fadeIn(0)
         this.mixer.update(props.clock.getDelta())
-    }
+        // this.fadeMultiplier = 1
+      } else
+        this.stopStepsSounds()
+    } else
+      this.stopStepsSounds()
+    // if (props.input.move.length() < .00000000001) {
+    //   // const modulus = this.mixer.time % this.gtlf.animations[ 0 ].duration
+
+    //   // if (this.fadeMultiplier === 1)
+    //     // console.log(this.gtlf.animations[ 0 ].duration)
+    //     this.mixer.existingAction(this.gtlf.animations[ 0 ]).fadeOut(0)
+    //   // this.mixer.setTime(this.mixer.time - modulus * (1 - this.fadeMultiplier))
+    //   // this.fadeMultiplier *= .95
+    // }
+      // this.mixer.existingAction( this.gtlf.animations[ 0 ].duration ).fadeOut(2)
 
     if (props.input.move.length() > 0)
       this.model.quaternion.slerp(
@@ -115,7 +187,7 @@ export default class Character extends Unit {
       .applyAxisAngle(yAxis, cameraAngleConrolsApplied.x)
 
     this.props.controls.target.copy(this.model.position)
-    this.props.controls.target.setY(5)
+    this.props.controls.target.setY(isTouchDevice() ? 7 : 5)
     this.props.camera.position.copy(tmpVector.copy(this.props.controls.target).add(cameraToTarget))
   }
 

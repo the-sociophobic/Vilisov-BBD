@@ -5,6 +5,8 @@ import clamp from 'clamp'
 import isTouchDevice from 'libs/utils/isTouchDevice'
 
 
+const moveSpeed = .25
+
 const yAxis = new THREE.Vector3(0, 1, 0)
 
 const initialThis = {
@@ -17,6 +19,7 @@ const initialThis = {
     alphaY: 0,
   },
 
+  moveSpeed: moveSpeed / .06,
   move: new THREE.Vector3(),
   moveFlags: {
     up: [
@@ -95,7 +98,8 @@ export default class Controls extends Unit {
     this.joystickManager = nipplejs.create(options)
 
     this.joystickManager[0].on('move', (e, data) => {
-      this.move.set(-data.force / 7, 0, 0)
+      // this.move.set(-data.force / 7, 0, 0)
+      this.move.set(-moveSpeed, 0, 0)
         .applyAxisAngle(yAxis, data.angle.radian)
     })
     this.joystickManager[0].on('end', e => {
@@ -124,7 +128,7 @@ export default class Controls extends Unit {
           0,
           getDirectionState(this.moveFlags.up) - getDirectionState(this.moveFlags.down))
         .normalize()
-        .multiplyScalar(.55)
+        .multiplyScalar(moveSpeed)
   }
 
   

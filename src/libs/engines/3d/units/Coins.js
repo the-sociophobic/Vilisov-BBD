@@ -138,6 +138,8 @@ export default class Coins extends transitionHandler {
         })
 
         this.emmitCoin(coin)
+
+        props.react.addCoin()
       }
 
       //FALL AND ROTATION

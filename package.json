@@ -1,5 +1,5 @@
 {
-  "homepage": "https://the-sociophobic.github.io/Vilisov-BBD",
+  "homepage": "https://apollonia.today/ubi",
   "name": "vilisov-bbd",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +14,7 @@
     "node-sass": "^4.14.1",
     "postprocessing": "^6.14.0",
     "react": "^16.13.1",
+    "react-div-100vh": "^0.3.8",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-scripts": "3.4.1",

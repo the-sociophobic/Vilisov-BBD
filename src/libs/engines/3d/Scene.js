@@ -41,7 +41,8 @@ export default class Scene extends transitionHandler {
     this.scene.renderer = new THREE.WebGLRenderer({ antialias: !optimise, alpha: true })
     this.scene.renderer.setClearColor(0x000000, 0)
     this.scene.renderer.setSize(W, H)
-    this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
+    // this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
+    this.scene.renderer.setPixelRatio(window.devicePixelRatio)
     this.scene.renderer.shadowMap.enabled = true
 
     ViewerDiv.appendChild(this.scene.renderer.domElement)
@@ -82,7 +83,8 @@ export default class Scene extends transitionHandler {
     this.scene.camera.updateProjectionMatrix()
 
     this.scene.renderer.setSize(W, H)
-    this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
+    // this.scene.renderer.setPixelRatio(!optimise ? window.devicePixelRatio : 1)
+    this.scene.renderer.setPixelRatio(window.devicePixelRatio)
   }
 
   animate = () => {
@@ -102,6 +104,7 @@ export default class Scene extends transitionHandler {
           ...this.scene,
           input: this.scene.units.Controls,
           maxFrameNumber: maxFrameNumber,
+          react: this.props.react,
         }))
 
     controls.update()
@@ -118,6 +121,7 @@ export default class Scene extends transitionHandler {
       ...this.scene,
       input: this.scene.units.Controls,
       maxFrameNumber: maxFrameNumber,
+      react: this.props.react,
     }
 
     Object.keys(this.props.units)

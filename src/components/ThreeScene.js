@@ -13,16 +13,23 @@ import Controls from 'libs/engines/3d/units/Controls'
 import BloomPostprocessing from 'libs/engines/3d/units/BloomPostprocessing'
 // import EasterEgg from 'libs/engines/3d/units/EasterEgg'
 
+import CoinsCollected from 'components/CoinsCollected'
+
 
 export default class ThreeScene extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      coinsCollected: 0,
+    }
 
     this.viewerRef = new React.createRef()
 
     this.scene = new Scene({
+      react: {
+        addCoin: () => this.setState({coinsCollected: this.state.coinsCollected + 1})
+      },
       units: {
         Character: {
           unit: Character,
@@ -94,6 +101,7 @@ export default class ThreeScene extends Component {
       className="Viewer"
       ref={this.viewerRef}
     >
+      <CoinsCollected number={this.state.coinsCollected} />
       <div id="zone-joystick" />
     </div>
 }

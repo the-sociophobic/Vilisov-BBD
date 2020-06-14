@@ -13,6 +13,8 @@ $font-light-gray: #B7B7B7
   font-family: 'RF-Dewi', sans-serif
   color: $font-light-gray
 
+body
+  background-color: black
 
 .Viewer
   background-color: #444444
@@ -34,20 +36,84 @@ $font-light-gray: #B7B7B7
     position: absolute
     right: 0
     bottom: 0
+    .back
+      background: rgba(0, 0, 0, 0) !important
+      box-shadow: inset 0 0 0px 4px white
+      opacity: .85 !important
+    .front
+      opacity: .85 !important
+    @media screen and ( max-width: 568px )
+      height: 50%
+  .coins-collected
+    position: absolute
+    left: 45px
+    bottom: 25px
+    background-color: black
+    width: 120px
+    height: 50px
+    border-radius: 15px
+    padding-left: 70px
+    line-height: 50px
+    font-size: 30px
+    font-weight: 800px
+    color: white
+    &::before
+      content: ""
+      position: absolute
+      width: 30px
+      height: 30px
+      top: 10px
+      left: 20px
+      border-radius: 20px
+      background-color: #FDFF86
+    @media screen and ( max-width: 767px )
+      left: 25px
+      bottom: 55px
+      width: 70px
+      height: 30px
+      border-radius: 8px
+      padding-left: 40px
+      line-height: 30px
+      font-size: 20px
+      &::before
+        width: 18px
+        height: 18px
+        top: 6px
+        left: 12px
+
+
+
 .text-area
   position: absolute
   top: 0
-  left: 0
+  left: 10%
   display: flex
   flex-direction: row
   justify-content: space-around
   align-items: center
-  width: 100%
+  width: 80%
   height: 100%
   @media screen and ( max-width: 1024px )
+    width: 80%
     height: 60%
+    left: 10%
     flex-direction: column
     justify-content: flex-start
+  &__bottom-text
+    position: fixed
+    width: 80%
+    bottom: 10%
+    left: 10%
+    text-align: center
+    font-size: 24px
+    @media screen and ( max-width: 1500px )
+      font-size: 20px
+    @media screen and ( max-width: 1024px )
+      font-size: 16px
+    @media screen and ( max-width: 800px )
+      font-size: 16px
+    @media screen and ( max-width: 568px )
+      font-size: 12px
   &__left-column,
   &__right-column
     // height: 100%
@@ -82,14 +148,22 @@ $font-light-gray: #B7B7B7
       font-weight: 900
       color: rgba(155, 255, 183, 0.5)
       text-align: center
-      font-size: 111px
+      // font-size: 111px
+      font-size: 75px
       @media screen and ( max-width: 1500px )
         font-size: 50px
       @media screen and ( max-width: 1024px )
         font-size: 60px
       @media screen and ( max-width: 800px )
         font-size: 37px
+      @media screen and ( max-width: 568px )
+        font-size: 27px
         
+    .h2
+      font-weight: 900
+      text-align: center
+
+  
 
 .buttons
   position: fixed
@@ -160,3 +234,8 @@ $font-light-gray: #B7B7B7
         transform: translate(3%, 3.5%)
       90%
         transform: translate(-1.0%, 1.0%)
+
+
+
+
+

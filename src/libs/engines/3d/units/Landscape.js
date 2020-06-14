@@ -6,7 +6,7 @@ import textureLoader from 'libs/engines/3d/textureLoader'
 
 import treeModel from 'libs/engines/3d/models/tree.glb'
 import planeTextureImage from 'libs/engines/3d/textures/blackgrid.jpg'
-
+import backgroundMusic from 'sounds/background.mp3'
 
 const treeAmount = 75
 const ArenaRadius = 300
@@ -18,6 +18,12 @@ export default class Character extends Unit {
   constructor(props) {
     super(props)
 
+    this.audio = new Audio(backgroundMusic)
+    this.audio.addEventListener('ended', () => {
+      this.audio.currentTime = 0
+      this.audio.play()
+    })
+    // this.audio.play()
     this.loadModel()
   }
 
