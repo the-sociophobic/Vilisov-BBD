@@ -23,7 +23,7 @@ export default class Character extends Unit {
       this.audio.currentTime = 0
       this.audio.play()
     })
-    // this.audio.play()
+    this.audio.play()
     this.loadModel()
   }
 

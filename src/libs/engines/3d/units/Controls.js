@@ -5,7 +5,7 @@ import clamp from 'clamp'
 import isTouchDevice from 'libs/utils/isTouchDevice'
 
 
-const moveSpeed = .25
+const moveSpeed = .55
 
 const yAxis = new THREE.Vector3(0, 1, 0)
 

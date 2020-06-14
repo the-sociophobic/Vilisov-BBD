@@ -12,6 +12,8 @@ import footstep1 from 'sounds/footstep1.mp3'
 
 const ArenaRadius = 300
 const modelZOffset = -2
+const slowerAnimation = .1
+
 const minPosition = new THREE.Vector3(-ArenaRadius, -ArenaRadius, -ArenaRadius)
 const maxPosition = new THREE.Vector3( ArenaRadius,  ArenaRadius,  ArenaRadius)
 const xAxis = new THREE.Vector3(1, 0, 0)
@@ -79,8 +81,8 @@ export default class Character extends Unit {
     const interval = Math.round(1250 / this.mixer.timeScale)
 
     if (!this.footstep0Interval) {
-      // this.footstep0.currentTime = 0
-      // this.footstep0.play()
+      this.footstep0.currentTime = 0
+      this.footstep0.play()
       this.footstep0Interval = setInterval(() => {
         this.footstep0.currentTime = 0
         this.footstep0.play()
@@ -88,8 +90,8 @@ export default class Character extends Unit {
     }
     if (!this.footstep1Interval && !this.footstep1Timeout) {
       this.footstep1Timeout = setTimeout(() => {
-        // this.footstep1.currentTime = 0
-        // this.footstep1.play()
+        this.footstep1.currentTime = 0
+        this.footstep1.play()
         this.footstep1Interval = setInterval(() => {
           this.footstep1.currentTime = 0
           this.footstep1.play()
@@ -118,7 +120,7 @@ export default class Character extends Unit {
 
     if (this.firstFlag) {
       this.firstFlag = false
-      this.mixer.timeScale *= props.input.moveSpeed
+      this.mixer.timeScale *= props.input.moveSpeed * slowerAnimation
     }
     
     cameraAngleX +=

@@ -13,14 +13,13 @@ export default class BloomPostprocessing extends Unit {
     } = props
 
     this.bloom = new BloomEffect()
+    //ВОТ ТУТ РЕДАКТИРОВАТЬ БЛУМ
+    this.bloom.intensity = 1
+
     this.pass = new EffectPass(camera, this.bloom)
     composer.addPass(this.pass)
   }
 
-  animate = props => {
-    // this.pass.strength = this.params[0]
-    // this.pass.radius = this.params[1]
-    // this.pass.threshold = this.params[2]
-  }
+  animate = props => {}
   dispose = () => {}
 }
