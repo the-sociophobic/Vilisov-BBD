@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "980065ae038dfe219ef306cc5b7d32fc",
+    "revision": "60227a0660a24d11d0273c5aeb4c019a",
     "url": "/ubi/index.html"
   },
   {
-    "revision": "b6b5d91cd234d12f203d",
-    "url": "/ubi/static/css/main.402d70c3.chunk.css"
+    "revision": "d5b0a05568953e7ce219",
+    "url": "/ubi/static/css/main.38c1ae40.chunk.css"
   },
   {
-    "revision": "4c5b9096147d46b4e414",
-    "url": "/ubi/static/js/2.2b1e3f54.chunk.js"
+    "revision": "32a33ef9f3d5db07f5dd",
+    "url": "/ubi/static/js/2.75ae72a9.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/ubi/static/js/2.2b1e3f54.chunk.js.LICENSE.txt"
+    "url": "/ubi/static/js/2.75ae72a9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b6b5d91cd234d12f203d",
-    "url": "/ubi/static/js/main.24dcc1f2.chunk.js"
+    "revision": "d5b0a05568953e7ce219",
+    "url": "/ubi/static/js/main.647717be.chunk.js"
   },
   {
     "revision": "0b4ee1bb27fd4cce49c2",
@@ -44,6 +44,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ubi/static/media/Woman.c9ed6341.glb"
   },
   {
+    "revision": "d388a3f20bd6efd65d3f7deff60466cf",
+    "url": "/ubi/static/media/app-store.d388a3f2.png"
+  },
+  {
     "revision": "3c316576ec8769bad1decee8c72dbf01",
     "url": "/ubi/static/media/background.3c316576.mp3"
   },
@@ -62,6 +66,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2b680b02b5697236806a9eca60c785b8",
     "url": "/ubi/static/media/footstep1.2b680b02.mp3"
+  },
+  {
+    "revision": "ef5c7ffdedb3a69ee6d10db40c3a955f",
+    "url": "/ubi/static/media/google-play.ef5c7ffd.png"
   },
   {
     "revision": "466139342aeb36a9a65ec1cc031613df",
