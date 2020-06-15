@@ -20,6 +20,7 @@ $slide-transition: .35s
   color: $font-light-gray
   margin: 0
   box-sizing: border-box
+  @extend .noselect
 
 body
   background-color: black
@@ -40,6 +41,14 @@ body
 .mobile-only
   @media screen and ( min-width: $joystick-breakpoint + 1px)
     display: none
+
+.noselect
+  -webkit-touch-callout: none;  /* iOS Safari */
+  -webkit-user-select: none;    /* Safari */
+  -khtml-user-select: none;     /* Konqueror HTML */
+  -moz-user-select: none;       /* Firefox */
+  -ms-user-select: none;        /* Internet Explorer/Edge */
+  user-select: none;            /* Non-prefixed version, currently supported by Chrome and Opera */
 
 .Viewer
   background-color: #444444
@@ -177,7 +186,7 @@ body
       @media screen and ( max-width: $joystick-breakpoint )
         width: 80vw
         top: 10vh
-        font-size: 10px
+        font-size: 2.3vw
     &--0
       .landing__content__description-0
         right: 2.5vw
@@ -196,11 +205,9 @@ body
       transition: left $slide-transition
       @media screen and ( max-width: $joystick-breakpoint )
         width: 60vw
-        font-size: 2vw
-        top: 65vw
+        font-size: 2.3vw
+        top: 32vh
         transform: translateX(-50%)
-      @media screen and ( max-width: $problematic-breakpoint )
-        top: 55vw
     &--0
       .landing__content__description-1
         left: 10vw
@@ -217,9 +224,14 @@ body
       @media screen and ( max-width: $joystick-breakpoint )
         width: 65vw
         min-width: 100px
-        font-size: 1.5vw
+        font-size: 2.3vw
         top: 20vh
         transform: translateX(50%)
+        height: 25vh
+        overflow-y: scroll
+        -webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+        padding-bottom: 3vh
+        z-index: 10000
       @media screen and ( max-width: $problematic-breakpoint )
         width: 75vw
         top: 17vh
@@ -247,9 +259,9 @@ body
       top: 23vw
       transition: right $slide-transition
       @media screen and ( max-width: $joystick-breakpoint )
-        font-size: 1.8vw
-        width: 60vw
-        top: 42vw
+        font-size: 2.3vw
+        width: 70vw
+        top: 47vw
         transform: translateX(50%)
     &--0
       .landing__content__credits
@@ -384,13 +396,12 @@ body
   min-width: 300px
   z-index: 10000
   transition: left $slide-transition
-  @media screen and ( min-width: $joystick-breakpoint + 1px )
+  @media screen and ( min-width: 768px )
+    position: fixed
     bottom: 25px
-  @media screen and ( max-width: $joystick-breakpoint )
-    top: 50vh
   @media screen and ( max-width: 768px - 1px )
     min-width: 150px
-    top: 42vh
+    top: 51vh
   &__width-container
     width: 100%
     padding-top: 16.6%
@@ -407,7 +418,7 @@ body
         height: 100%
         width: auto 
 
-@media screen and ( max-width: $joystick-breakpoint )
+@media screen and ( max-width: 768px - 1px )
   .landing__content--0,
   .landing__content--1,
     .download-links
@@ -456,11 +467,11 @@ $word-changer-transition: .3s
   display: inline-block
   position: relative
   width: 160px
-  height: 16px
+  height: 18px
   margin: 0 10px
   @media screen and ( max-width: $joystick-breakpoint )
-    height: 8px
-    width: 80px
+    width: calc(2.3vw * 9)
+    height: 2.3vw
   &::after
     content: ""
     position: absolute
@@ -470,7 +481,7 @@ $word-changer-transition: .3s
     width: calc(100% + 10px)
     background-color: #B7B7B7
     @media screen and ( max-width: $joystick-breakpoint )
-      top: 6px
+      top: 1.15vw
   &__container
     position: absolute
     height: 500%
@@ -480,9 +491,9 @@ $word-changer-transition: .3s
     overflow: hidden
     .item
       text-align: left
-      height: 16px
+      height: 18px
       @media screen and ( max-width: $joystick-breakpoint )
-        height: 8px
+        height: 2.3vw
       line-height: 1
       transition: height $word-changer-transition, opacity $word-changer-transition
       opacity: 0
@@ -490,9 +501,9 @@ $word-changer-transition: .3s
         height: 0
         opacity: 0
       &:nth-child(5)
-        height: 16px
+        height: 18px
         @media screen and ( max-width: $joystick-breakpoint )
-          height: 8px
+          height: 2.3vw
       &:nth-child(3), &:nth-child(5)
         opacity: .5
       &:nth-child(4)
