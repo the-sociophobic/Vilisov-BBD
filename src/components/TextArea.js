@@ -97,7 +97,7 @@ export default class TextArea extends Component {
           <span className="green">лэндинг</span> лев&nbsp;васильев<br />
           <span className="green">звук</span> леонид&nbsp;именных<br />
           <span className="green">разработка</span> артём&nbsp;васич, илья&nbsp;саяпин<br />
-          <span className="green">текст, продакшн, AR-сцены</span> виктор&nbsp;вилисов<br />
+          <span className="green">текст, продакшн, AR&#8209;сцены</span> виктор&nbsp;вилисов<br />
         </div>
 
         <div className="landing__content__links">

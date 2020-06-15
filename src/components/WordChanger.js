@@ -16,7 +16,7 @@ export default class TextArea extends Component {
   componentDidMount = () =>
     this.changeWordInterval = setInterval(
       () => this.changeWord()
-      , 2000)
+      , 1500)
   componentWillUnmount = () =>
     clearInterval(this.changeWordInterval)
 

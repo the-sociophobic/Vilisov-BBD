@@ -10,10 +10,6 @@ const moveSpeed = .55
 const yAxis = new THREE.Vector3(0, 1, 0)
 
 const initialThis = {
-  // scroll: {
-  //   alphaX: 0,
-  //   alphaY: 0,
-  // },
   mouse: {
     alphaX: 0,
     alphaY: 0,
@@ -74,27 +70,36 @@ export default class Controls extends Unit {
       .forEach(key => this[key] = initialThis[key])
 
     if (isTouchDevice()) {  
-      // this.handleScroll()
-      // this.scrollUpdateInterval = setInterval(() => this.handleScroll(), 5)
+      ;
     }
     else {
       window.addEventListener('mousemove', this.handleMouseMove, false)
       window.addEventListener('keydown', this.handleKeyDown, false)
       window.addEventListener('keyup', this.handleKeyUp, false)
     }
+
+    window.addEventListener('resize', () => {
+      this.joystickManager && this.joystickManager.destroy && this.joystickManager.destroy()
+      this.addJoystick()
+    })
+    window.addEventListener('orientationchange', () => {
+      this.joystickManager && this.joystickManager.destroy && this.joystickManager.destroy()
+      this.addJoystick()
+    })
   }
 
-  init = () => {
+  addJoystick = () => {
     const zoneJoystick = document.getElementById('zone-joystick')
     var options = {
       zone: zoneJoystick,
       mode: 'static',
       position: {
-        x: Math.round(window.innerWidth / 4 * 3),
+        x: Math.round(window.innerWidth < 768 ? window.innerWidth / 4 * 3 : window.innerWidth / 6 * 5),
         y: Math.round(window.innerHeight / 5 * 4),
       },
-      // size: 200,
+      size: window.innerWidth < 768 ? 80 : 100,
     }
+    
     this.joystickManager = nipplejs.create(options)
 
     this.joystickManager[0].on('move', (e, data) => {
@@ -107,12 +112,9 @@ export default class Controls extends Unit {
     })
   }
 
-  // handleScroll = e => {
-  //   const threeSceneElement = document.getElementById("three-scene")
-  //   const getBodyScrollTop = () => Math.max(-threeSceneElement.getBoundingClientRect().top, 0)
-
-  //   this.scroll.alphaY = clamp(getBodyScrollTop() / threeSceneElement.offsetHeight * .5, 0, .5)
-  // }
+  init = () => {
+    this.addJoystick()
+  }
 
   animate = props => {
     const getDirectionState = direction =>
@@ -160,7 +162,6 @@ export default class Controls extends Unit {
   dispose = () => {
     if (isTouchDevice())
       ;
-      // clearInterval(this.scrollUpdateInterval)
     else
       window.removeEventListener('mousemove', this.handleMouseMove, false)
   }

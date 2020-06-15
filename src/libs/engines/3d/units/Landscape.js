@@ -23,7 +23,8 @@ export default class Laandscape extends Unit {
       this.audio.currentTime = 0
       this.audio.play()
     })
-    this.audio.play()
+    this.audio.addEventListener("canplaythrough",
+      () => this.audio.play())
     this.loadModel()
   }
 

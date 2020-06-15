@@ -90,9 +90,9 @@ body
       left: 20px
       border-radius: 20px
       background-color: #FDFF86
-    @media screen and ( max-width: 767px )
+    @media screen and ( max-width: 768px - 1px )
       left: 25px
-      bottom: 55px
+      bottom: 85px
       width: 110px
       height: 30px
       border-radius: 8px
@@ -281,7 +281,7 @@ body
       a
         text-decoration: none
       &__item
-        font-size: 25px
+        font-size: 1.5vw
         line-height: 1.3
         padding: 0 5px
         color: black
@@ -382,7 +382,7 @@ body
   transform: translateX(-50%) 
   width: 12vw
   min-width: 300px
-  z-index: 100000
+  z-index: 10000
   transition: left $slide-transition
   @media screen and ( min-width: $joystick-breakpoint + 1px )
     bottom: 25px
@@ -423,7 +423,7 @@ body
   left: 0
   width: 100vw
   height: 100vh
-  background-color: rgba(0, 0, 0, .85)
+  background-color: rgba(0, 0, 0, .65)
   cursor: pointer
   z-index: 10000
   &__container
@@ -520,9 +520,9 @@ $word-changer-transition: .3s
 
 @media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape)
   .landing__content__h1
-    font-size: 1.5vw !important
+    font-size: 2.5vw !important
     top: 10vh !important
-    right: 10vw !important
+    right: 20vw !important
     opacity: .8 !important
     color: rgb(120, 201, 143) !important
   .coins-collected
@@ -534,7 +534,8 @@ $word-changer-transition: .3s
   .landing__content__links,
   .controls-helper,
   .download-links,
-  .video-modal
+  .video-modal,
+  .arrow
     display: none !important
 
 
