@@ -16,7 +16,7 @@ export default class TextArea extends Component {
   componentDidMount = () =>
     this.changeWordInterval = setInterval(
       () => this.changeWord()
-      , 2500)
+      , 2000)
   componentWillUnmount = () =>
     clearInterval(this.changeWordInterval)
 
@@ -34,11 +34,18 @@ export default class TextArea extends Component {
   render = () =>
     <div className="word-changer">
       <div className={"word-changer__container " + (this.state.shrinked && "word-changer__container--shrinked")}>
-        {this.props.words[this.modulus(this.state.currentIndex + 2)]}
-        {this.props.words[this.modulus(this.state.currentIndex + 1)]}
-        {this.props.words[this.state.currentIndex]}
-        {this.props.words[this.modulus(this.state.currentIndex - 1)]}
-        {this.props.words[this.modulus(this.state.currentIndex - 2)]}
+        {this.props.words
+          .map((item, index) => {
+            const word = this.props.words[this.modulus(this.state.currentIndex - index - 2)]
+
+            return (
+              <div
+                className="item"
+                key={word}
+              >
+                {word}
+              </div>
+        )})}
       </div>
     </div>
 }

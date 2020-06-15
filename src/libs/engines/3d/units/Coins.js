@@ -112,13 +112,14 @@ export default class Coins extends transitionHandler {
   }
 
   animate = props => {
-    if (!this.coinInstance)
+    if (!this.coinInstance || !props.units.Character.model)
       return
 
     this.animateTransitions()
 
-    charachterPos.copy(props.controls.target)
-    charachterPos.setY(charachterPos.y - 3)
+    charachterPos
+      .copy(props.units.Character.model.position)
+      .setY(3)
 
     this.coins.forEach(coin => {
       //COLLISION

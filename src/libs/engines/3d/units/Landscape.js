@@ -14,7 +14,7 @@ const xAxis = new THREE.Vector3(1, 0, 0)
 const yAxis = new THREE.Vector3(0, 1, 0)
 // const zAxis = new THREE.Vector3(0, 0, 1)
 
-export default class Character extends Unit {
+export default class Laandscape extends Unit {
   constructor(props) {
     super(props)
 

@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "clamp": "^1.0.1",
+    "debounce": "^1.2.0",
     "gh-pages": "^3.0.0",
     "multiple-extend": "^0.1.2",
     "nipplejs": "^0.8.5",

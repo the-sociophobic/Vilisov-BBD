@@ -11,7 +11,12 @@ import footstep1 from 'sounds/footstep1.mp3'
 
 
 const ArenaRadius = 300
-const modelZOffset = -2
+const modelXOffset = 5
+const modelXOffsetTouch = 2
+const getModelOffset = () =>
+  isTouchDevice() ?
+    modelXOffsetTouch : modelXOffset
+var modelOffset = new THREE.Vector3(getModelOffset(), 0, 0)
 const slowerAnimation = .1
 
 const minPosition = new THREE.Vector3(-ArenaRadius, -ArenaRadius, -ArenaRadius)
@@ -70,6 +75,7 @@ export default class Character extends Unit {
     this.action = this.mixer.clipAction( this.gtlf.animations[ 0 ] )
     this.action.play()
 
+    this.model.position.set(getModelOffset(), 0, 0)
     this.model.scale.set(randomModel.scale, randomModel.scale, randomModel.scale)
 
     this.props.scene.add(this.model)
@@ -141,6 +147,10 @@ export default class Character extends Unit {
       .copy(props.input.move)
         .applyAxisAngle(yAxis, cameraAngleConrolsApplied.x)
 
+    modelOffset
+      .set(getModelOffset(), 0, 0)
+      .applyAxisAngle(yAxis, cameraAngleConrolsApplied.x)
+
     nextPos.copy(this.model.position)
       .add(moveCameraAngleApplied)
     nextPos.clamp(minPosition, maxPosition)
@@ -159,24 +169,12 @@ export default class Character extends Unit {
     if (!collisionFlag) {
       this.model.position.copy(nextPos)
       if (props.input.move.length() > .01) {
-        this.startStepsSounds()
-        // this.mixer.existingAction(this.gtlf.animations[ 0 ]).fadeIn(0)
+        // this.startStepsSounds()
         this.mixer.update(props.clock.getDelta())
-        // this.fadeMultiplier = 1
       } else
-        this.stopStepsSounds()
+        ;//this.stopStepsSounds()
     } else
-      this.stopStepsSounds()
-    // if (props.input.move.length() < .00000000001) {
-    //   // const modulus = this.mixer.time % this.gtlf.animations[ 0 ].duration
-
-    //   // if (this.fadeMultiplier === 1)
-    //     // console.log(this.gtlf.animations[ 0 ].duration)
-    //     this.mixer.existingAction(this.gtlf.animations[ 0 ]).fadeOut(0)
-    //   // this.mixer.setTime(this.mixer.time - modulus * (1 - this.fadeMultiplier))
-    //   // this.fadeMultiplier *= .95
-    // }
-      // this.mixer.existingAction( this.gtlf.animations[ 0 ].duration ).fadeOut(2)
+      ;//this.stopStepsSounds()
 
     if (props.input.move.length() > 0)
       this.model.quaternion.slerp(
@@ -188,9 +186,9 @@ export default class Character extends Unit {
       .applyAxisAngle(xAxis, cameraAngleConrolsApplied.y)
       .applyAxisAngle(yAxis, cameraAngleConrolsApplied.x)
 
-    this.props.controls.target.copy(this.model.position)
-    this.props.controls.target.setY(isTouchDevice() ? 7 : 5)
-    this.props.camera.position.copy(tmpVector.copy(this.props.controls.target).add(cameraToTarget))
+    props.controls.target.copy(this.model.position).sub(modelOffset)
+    props.controls.target.setY(isTouchDevice() ? 7 : 5)
+    props.camera.position.copy(tmpVector.copy(this.props.controls.target).add(cameraToTarget))
   }
 
   dispose = () => {}
