@@ -95,7 +95,7 @@ export default class Controls extends Unit {
       mode: 'static',
       position: {
         x: Math.round(window.innerWidth < 768 ? window.innerWidth / 4 * 3 : window.innerWidth / 6 * 5),
-        y: Math.round(window.innerHeight / 5 * 4),
+        y: Math.round(window.innerHeight / 6 * 5),
       },
       size: window.innerWidth < 768 ? 80 : 100,
     }
