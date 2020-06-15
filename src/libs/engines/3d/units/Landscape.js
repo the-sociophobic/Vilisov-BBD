@@ -22,9 +22,36 @@ export default class Laandscape extends Unit {
     this.audio.addEventListener('ended', () => {
       this.audio.currentTime = 0
       this.audio.play()
+      console.log("a")
     })
+
+    const events = [
+      "click",
+      "mousedown",
+      "mousemove",
+      "mouseover",
+      "mouseout",
+      "mousewheel",
+      "keydown",
+      "textInput",
+      "touchstart",
+      "touchcancel",
+      "resize",
+      "orientationchange",
+      "scroll",
+      "zoom",
+    ]
+
+    const playAudioFirstTime = () => {
+      events.forEach(event =>
+        document.removeEventListener(event, playAudioFirstTime))
+      this.audio.play()
+    }
+    
     this.audio.addEventListener("canplaythrough",
-      () => this.audio.play())
+      () => events.forEach(event =>
+        document.addEventListener(event, playAudioFirstTime)))
+
     this.loadModel()
   }
 
