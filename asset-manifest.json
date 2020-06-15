@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ubi/static/css/main.8e31a34e.chunk.css",
+    "main.css": "/ubi/static/css/main.7e637fda.chunk.css",
     "main.js": "/ubi/static/js/main.edabc740.chunk.js",
     "main.js.map": "/ubi/static/js/main.edabc740.chunk.js.map",
     "runtime-main.js": "/ubi/static/js/runtime-main.eddb6051.js",
@@ -8,9 +8,9 @@
     "static/js/2.cedb1558.chunk.js": "/ubi/static/js/2.cedb1558.chunk.js",
     "static/js/2.cedb1558.chunk.js.map": "/ubi/static/js/2.cedb1558.chunk.js.map",
     "index.html": "/ubi/index.html",
-    "precache-manifest.11873fb2ce50e06713e3abaf717666d6.js": "/ubi/precache-manifest.11873fb2ce50e06713e3abaf717666d6.js",
+    "precache-manifest.1011bf0404db92c78963cc37e1877a4b.js": "/ubi/precache-manifest.1011bf0404db92c78963cc37e1877a4b.js",
     "service-worker.js": "/ubi/service-worker.js",
-    "static/css/main.8e31a34e.chunk.css.map": "/ubi/static/css/main.8e31a34e.chunk.css.map",
+    "static/css/main.7e637fda.chunk.css.map": "/ubi/static/css/main.7e637fda.chunk.css.map",
     "static/js/2.cedb1558.chunk.js.LICENSE.txt": "/ubi/static/js/2.cedb1558.chunk.js.LICENSE.txt",
     "static/media/Astronaut.glb": "/ubi/static/media/Astronaut.ac9701ba.glb",
     "static/media/index.sass": "/ubi/static/media/RF-Dewi-Expanded-Semibold.15a2a887.otf",
@@ -28,7 +28,7 @@
   "entrypoints": [
     "static/js/runtime-main.eddb6051.js",
     "static/js/2.cedb1558.chunk.js",
-    "static/css/main.8e31a34e.chunk.css",
+    "static/css/main.7e637fda.chunk.css",
     "static/js/main.edabc740.chunk.js"
   ]
 }
