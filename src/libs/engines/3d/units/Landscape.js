@@ -1,3 +1,7 @@
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+
+
 import clamp from 'clamp'
 import THREE from 'libs/engines/3d/three'
 import Unit from 'libs/engines/3d/Unit'
@@ -10,9 +14,6 @@ import backgroundMusic from 'sounds/background.mp3'
 
 const treeAmount = 75
 const ArenaRadius = 300
-const xAxis = new THREE.Vector3(1, 0, 0)
-const yAxis = new THREE.Vector3(0, 1, 0)
-// const zAxis = new THREE.Vector3(0, 0, 1)
 
 export default class Laandscape extends Unit {
   constructor(props) {
@@ -22,7 +23,6 @@ export default class Laandscape extends Unit {
     this.audio.addEventListener('ended', () => {
       this.audio.currentTime = 0
       this.audio.play()
-      console.log("a")
     })
 
     const events = [
@@ -42,17 +42,9 @@ export default class Laandscape extends Unit {
       "zoom",
     ]
 
-    const playAudioFirstTime = () => {
-      events.forEach(event =>
-        document.removeEventListener(event, playAudioFirstTime))
-      this.audio.play()
-    }
-    
-    this.audio.addEventListener("canplaythrough",
-      () => events.forEach(event =>
-        document.addEventListener(event, playAudioFirstTime)))
-
     this.loadModel()
+    this.addSoundButton()
+    
   }
 
   loadModel = async () => {
@@ -105,6 +97,35 @@ export default class Laandscape extends Unit {
 
     this.treeInstance.instanceMatrix.needsUpdate = true
   }
+
+
+  addSoundButton = () => {
+    document.body
+      .insertAdjacentHTML('beforeend',
+        ReactDOMServer.renderToString(
+          this.renderSoundButton()))
+
+    window.addEventListener("click", e => {
+      if (e.target.id === "sound-alert")
+        this.hideSoundButton()
+    })      
+  }
+
+  hideSoundButton = () => {
+    console.log("a")
+    const elem = document.getElementById("sound-alert")
+    document.body.removeChild(elem)
+    this.audio.play()
+  }
+
+  renderSoundButton = () => (
+    <div
+      id="sound-alert"
+      className="sound-alert"
+    >
+      включить звук
+    </div>
+  )
 
   animate = props => {}
   dispose = () => {}

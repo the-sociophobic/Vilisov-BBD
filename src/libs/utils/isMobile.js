@@ -1,0 +1,1 @@
+export default () => navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)

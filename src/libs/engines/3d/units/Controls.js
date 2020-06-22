@@ -1,8 +1,13 @@
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+
 import THREE from 'libs/engines/3d/three'
 import Unit from 'libs/engines/3d/Unit'
 import nipplejs from 'nipplejs'
 import clamp from 'clamp'
 import isTouchDevice from 'libs/utils/isTouchDevice'
+import isMobile from 'libs/utils/isMobile'
+import isLandscape from 'libs/utils/isLandscape'
 
 
 const moveSpeed = .55
@@ -14,6 +19,8 @@ const initialThis = {
     alphaX: 0,
     alphaY: 0,
   },
+
+  space: false,
 
   moveSpeed: moveSpeed / .06,
   move: new THREE.Vector3(),
@@ -94,8 +101,14 @@ export default class Controls extends Unit {
       zone: zoneJoystick,
       mode: 'static',
       position: {
-        x: Math.round(window.innerWidth < 768 ? window.innerWidth / 4 * 3 : window.innerWidth / 6 * 5),
-        y: Math.round(window.innerHeight / 6 * 5),
+        x: isLandscape() ?
+          Math.round(window.innerWidth < 667 ? window.innerWidth / 4 : window.innerWidth / 6)
+          :
+          Math.round(window.innerWidth < 667 ? window.innerWidth / 4 * 3 : window.innerWidth / 6 * 5),
+        y: isLandscape() ?
+          Math.round(window.innerHeight / 5 * 4)
+          :
+          Math.round(window.innerHeight / 7 * 6),
       },
       size: window.innerWidth < 768 ? 80 : 100,
     }
@@ -112,8 +125,40 @@ export default class Controls extends Unit {
     })
   }
 
-  init = () => {
-    this.addJoystick()
+  addSpaceButton = () => {
+    const renderSoundButton = () => (
+      <div
+        id="space-button"
+        className="space-button"
+      >
+        space
+      </div>
+    )  
+
+    document.body
+      .insertAdjacentHTML('beforeend',
+        ReactDOMServer.renderToString(
+          renderSoundButton()))
+
+    window.addEventListener("click", e => {
+      if (e.target.id === "space-button") {
+        if (this.spaceCancelTimeout)
+          clearTimeout(this.spaceCancelTimeout)
+      
+        this.spaceCancelTimeout = setTimeout(() => {
+          this.space = false
+          this.spaceCancelTimeout = null
+        }, 100)
+        this.space = true
+      }
+    })
+  }
+
+  init = () => {    
+    if (isMobile()) {
+      this.addJoystick()
+      this.addSpaceButton()
+    }
   }
 
   animate = props => {
@@ -144,19 +189,27 @@ export default class Controls extends Unit {
     this.mouse.alphaY = clamp(e.pageY / window.innerHeight - .5, -.5, .5)
   }
 
-  handleKeyDown = e =>
+  handleKeyDown = e => {
     Object.keys(this.moveFlags)
       .forEach(direction =>
         this.moveFlags[direction]
           .forEach(key =>
             key.pressed |= (key.code === e.keyCode)))
 
-  handleKeyUp = e =>
+    if (e.keyCode === 32)
+      this.space = true
+  }
+
+  handleKeyUp = e => {
     Object.keys(this.moveFlags)
       .forEach(direction =>
         this.moveFlags[direction]
           .forEach(key =>
             key.pressed &= !(key.code === e.keyCode)))
+
+    if (e.keyCode === 32)
+      this.space = false
+  }
 
 
   dispose = () => {

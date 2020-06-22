@@ -18,7 +18,7 @@ var charachterPos = new THREE.Vector3()
 const coinInitialPos = () =>
   new THREE.Vector3(
     (Math.random() - .5) * 2 * ArenaRadius * .7,
-    35,
+    75,
     (Math.random() - .5) * 2 * ArenaRadius * .7,
   )
 
@@ -119,7 +119,7 @@ export default class Coins extends transitionHandler {
 
     charachterPos
       .copy(props.units.Character.model.position)
-      .setY(3)
+      .setY(props.units.Character.model.position.y + 3)
 
     this.coins.forEach(coin => {
       //COLLISION
@@ -174,7 +174,7 @@ export default class Coins extends transitionHandler {
     coin.transitionId = this.registerTransition({
       variable: coin.position,
       value: (new THREE.Vector3()).copy(coin.position).setY(1),
-      numberOfFrames: Math.round((.25 + Math.random()) * 250),
+      numberOfFrames: Math.round((.25 + Math.random()) * 500),
       onComplete: () => {
         coin.transitionId = this.registerTransition({
           variable: coin.scale,

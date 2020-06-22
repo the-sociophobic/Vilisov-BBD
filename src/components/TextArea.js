@@ -35,8 +35,6 @@ export default class TextArea extends Component {
       .removeEventListener("scroll", e => this.debouncedOnScroll(e))
 
   onScroll = e => {
-    // console.log(this.scrollableContentRef.current.getBoundingClientRect().top)
-    // console.log(this.scrollableContentRef.current.scrollTop)
     const scrollAlpha = -this.scrollableContentRef.current.getBoundingClientRect().top / this.getMaxScroll()
     const currentSlide = parseInt(Math.floor(scrollAlpha * .999 * numberOfSlides))
 
@@ -56,13 +54,19 @@ export default class TextArea extends Component {
       0
 
   nextSlide = () =>
-    document
-      .getElementById(slides[this.state.currentSlide + 1])
-      .scrollIntoView()
+    this.scrollableContentRef.current.clientHeight / this.scrollableContainerRef.current.clientHeight > 2 ?
+      document
+        .getElementById(slides[this.state.currentSlide + 1])
+        .scrollIntoView()
+      :
+      this.setState({currentSlide: clamp(this.state.currentSlide + 1, 0, numberOfSlides)})
   prevSlide = () =>
+    this.scrollableContentRef.current.clientHeight / this.scrollableContainerRef.current.clientHeight > 2 ?
     document
       .getElementById(slides[this.state.currentSlide - 1])
       .scrollIntoView()
+    :
+    this.setState({currentSlide: clamp(this.state.currentSlide - 1, 0, numberOfSlides)})
 
   render = () =>
     <div className="landing">
@@ -75,7 +79,9 @@ export default class TextArea extends Component {
         </h1>
 
         <div className="landing__content__description-0">
-          это не <WordChanger words={["кино", "перформанс", "игра", "подкаст", "шоу", "спектакль"]} /><br />это всё вместе. и что-то другое.
+            это не <WordChanger words={["кино", "перформанс", "игра", "подкаст", "шоу", "спектакль"]} />
+          <br />
+            это всё вместе. и что-то другое.
         </div>
 
         <div className="landing__content__description-1">
@@ -88,6 +94,8 @@ export default class TextArea extends Component {
           безусловный базовый доход — одна из самых заметных больших идей, формирующих будущее. сейчас она актуальна как никогда: эпоха постработы наступает вместе с повальной автоматизацией, освобождая время для творчества, но и оставляя миллионы людей незащищёнными. 
           <br /><br />
           мы узнали всё, что нужно знать про базовый доход, и собрали несколько документальных историй о том, как ББД мог бы буквально спасать жизни. как проходили пилотные тестирования базового дохода? перестают ли люди работать? как базовый доход освобождает женщин из рабства и спасает от изнасилований? как он помогает исключить унижение из отошений государства и гражданина? почему с БД люди чувствуют себя стабильно лучше? и при чём тут композитор элвин люсье? SITTING IN A ROOM. I AM. — это иммерсивный опыт в дополненной реальности, который отвечает на все эти вопросы; прямо у вас в комнате. 
+          <br /><br />
+          релиз в appstore и google play — до конца июня.
         </div>
 
         <div className="landing__content__credits">
@@ -98,6 +106,7 @@ export default class TextArea extends Component {
           <span className="green">звук</span> леонид&nbsp;именных<br />
           <span className="green">разработка</span> артём&nbsp;васич, илья&nbsp;саяпин<br />
           <span className="green">текст, продакшн, AR&#8209;сцены</span> виктор&nbsp;вилисов<br />
+          <DownloadLinks />
         </div>
 
         <div className="landing__content__links">
@@ -113,8 +122,6 @@ export default class TextArea extends Component {
             </div>
           </ExternalLink>
         </div>
-
-        <DownloadLinks />
 
       </div>
 
@@ -137,7 +144,7 @@ export default class TextArea extends Component {
 
       <ControlsHelper />
 
-      {this.state.currentSlide > 0 &&
+      {this.state.currentSlide > 1 &&
         <Arrow
           left
           onClick={() => this.prevSlide()}
