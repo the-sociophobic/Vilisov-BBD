@@ -140,18 +140,12 @@ export default class Controls extends Unit {
         ReactDOMServer.renderToString(
           renderSoundButton()))
 
-    window.addEventListener("click", e => {
-      if (e.target.id === "space-button") {
-        if (this.spaceCancelTimeout)
-          clearTimeout(this.spaceCancelTimeout)
-      
-        this.spaceCancelTimeout = setTimeout(() => {
-          this.space = false
-          this.spaceCancelTimeout = null
-        }, 100)
-        this.space = true
-      }
-    })
+    document.getElementById("space-button")
+      .addEventListener("touchstart", e =>
+        this.space = true)
+    document.getElementById("space-button")
+      .addEventListener("touchend", e =>
+        this.space = false)
   }
 
   init = () => {    
