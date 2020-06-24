@@ -23,9 +23,15 @@ $slide-transition: .35s
   margin: 0
   box-sizing: border-box
   @extend .noselect
+  // overflow: hidden
 
 body
   background-color: black
+
+::-webkit-scrollbar
+  width: 0
+  height: 0
+
 
 .desktop-only
   @media screen and ( max-width: $breakpoint-1366 )
@@ -49,9 +55,6 @@ body
     -webkit-mask-image: -webkit-gradient(linear, left 80%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
     padding-bottom: 7vh
     z-index: 10000
-    &::-webkit-scrollbar
-      width: 0
-      height: 0
 
 .std-font
   @media screen and ( max-width: $breakpoint-1024 )
