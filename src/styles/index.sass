@@ -26,7 +26,7 @@ $slide-transition: .35s
   // overflow: hidden
 
 body
-  background-color: black
+  // background-color: black
 
 ::-webkit-scrollbar
   width: 0
@@ -90,44 +90,47 @@ body
       opacity: .85 !important
     @media screen and ( max-width: 568px )
       height: 50%
-  .coins-collected
+
+.coins-collected
+  position: absolute
+  left: 45px
+  bottom: 25px
+  background-color: black
+  width: 160px
+  height: 50px
+  border-radius: 15px
+  padding-left: 70px
+  line-height: 50px
+  font-size: 30px
+  font-weight: 800px
+  color: white
+  &::before
+    content: ""
     position: absolute
-    left: 45px
-    bottom: 25px
-    background-color: black
-    width: 160px
-    height: 50px
-    border-radius: 15px
-    padding-left: 70px
-    line-height: 50px
-    font-size: 30px
-    font-weight: 800px
-    color: white
+    width: 30px
+    height: 30px
+    top: 10px
+    left: 20px
+    border-radius: 20px
+    background-color: #FDFF86
+  @media screen and ( max-width: $breakpoint-1024 )
+    left: 25px
+    bottom: 10vh
+  @media screen and ( max-width: 768px - 1px )
+    bottom: 16vh
+    width: 110px
+    height: 30px
+    border-radius: 8px
+    padding-left: 40px
+    line-height: 30px
+    font-size: 20px
     &::before
-      content: ""
-      position: absolute
-      width: 30px
-      height: 30px
-      top: 10px
-      left: 20px
-      border-radius: 20px
-      background-color: #FDFF86
-    @media screen and ( max-width: $breakpoint-1024 )
-      left: 25px
-      bottom: 10vh
-    @media screen and ( max-width: 768px - 1px )
-      bottom: 16vh
-      width: 110px
-      height: 30px
-      border-radius: 8px
-      padding-left: 40px
-      line-height: 30px
-      font-size: 20px
-      &::before
-        width: 18px
-        height: 18px
-        top: 6px
-        left: 12px
+      width: 18px
+      height: 18px
+      top: 6px
+      left: 12px
+  &__share-button
+    @extend .button
 
 
 

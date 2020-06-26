@@ -98,7 +98,7 @@ export default class ThreeScene extends Component {
 
   render = () =>
     <div
-      className="Viewer"
+      // className="Viewer"
       ref={this.viewerRef}
     >
       <CoinsCollected number={this.state.coinsCollected} />
