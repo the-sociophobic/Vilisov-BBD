@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+
 import ResizeObserver from 'resize-observer-polyfill'
 
 import Scene from 'libs/engines/3d/Scene'
@@ -98,10 +100,12 @@ export default class ThreeScene extends Component {
 
   render = () =>
     <div
-      // className="Viewer"
+      className="Viewer"
       ref={this.viewerRef}
     >
-      <CoinsCollected number={this.state.coinsCollected} />
+      {ReactDOM.createPortal(
+        <CoinsCollected number={this.state.coinsCollected} />,
+        document.body)}
       <div id="zone-joystick" />
     </div>
 }

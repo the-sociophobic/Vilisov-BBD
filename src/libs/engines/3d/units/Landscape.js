@@ -100,7 +100,7 @@ export default class Laandscape extends Unit {
 
 
   addSoundButton = () => {
-    document.body
+    document.getElementById("root")
       .insertAdjacentHTML('beforeend',
         ReactDOMServer.renderToString(
           this.renderSoundButton()))
@@ -114,7 +114,7 @@ export default class Laandscape extends Unit {
   hideSoundButton = () => {
     console.log("a")
     const elem = document.getElementById("sound-alert")
-    document.body.removeChild(elem)
+    document.getElementById("root").removeChild(elem)
     this.audio.play()
   }
 
