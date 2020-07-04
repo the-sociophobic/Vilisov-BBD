@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
 
-import clamp from 'clamp'
 import THREE from 'libs/engines/3d/three'
 import Unit from 'libs/engines/3d/Unit'
 import modelLoader from 'libs/engines/3d/modelLoader'
@@ -24,23 +23,6 @@ export default class Laandscape extends Unit {
       this.audio.currentTime = 0
       this.audio.play()
     })
-
-    const events = [
-      "click",
-      "mousedown",
-      "mousemove",
-      "mouseover",
-      "mouseout",
-      "mousewheel",
-      "keydown",
-      "textInput",
-      "touchstart",
-      "touchcancel",
-      "resize",
-      "orientationchange",
-      "scroll",
-      "zoom",
-    ]
 
     this.loadModel()
     this.addSoundButton()
@@ -123,7 +105,14 @@ export default class Laandscape extends Unit {
       id="sound-alert"
       className="sound-alert"
     >
-      включить звук
+      включить звук <span
+        className="emoji"
+        role="img"
+        aria-label="sound"
+        title="sound"
+      >
+        🔈
+      </span>
     </div>
   )
 

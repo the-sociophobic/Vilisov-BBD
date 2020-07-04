@@ -3,7 +3,7 @@ import debounce from 'debounce'
 import clamp from 'clamp'
 
 import WordChanger from 'components/WordChanger'
-import ControlsHelper from 'components/ControlsHelper'
+// import ControlsHelper from 'components/ControlsHelper'
 import DownloadLinks from 'components/DownloadLinks'
 import ExternalLink from 'components/ExternalLink'
 import VideoModal from 'components/VideoModal'
@@ -79,9 +79,12 @@ export default class TextArea extends Component {
         </h1>
 
         <div className="landing__content__description-0">
+          <div className="landing__content__description-0__line-0">
             это не <WordChanger words={["кино", "перформанс", "игра", "подкаст", "шоу", "спектакль"]} />
-          <br />
+          </div>
+          <div className="landing__content__description-0__line-1">
             это всё вместе. и что-то другое.
+          </div>
         </div>
 
         <div className="landing__content__description-1">
@@ -93,9 +96,9 @@ export default class TextArea extends Component {
           <br /><br />
           безусловный базовый доход — одна из самых заметных больших идей, формирующих будущее. сейчас она актуальна как никогда: эпоха постработы наступает вместе с повальной автоматизацией, освобождая время для творчества, но и оставляя миллионы людей незащищёнными. 
           <br /><br />
-          мы узнали всё, что нужно знать про базовый доход, и собрали несколько документальных историй о том, как ББД мог бы буквально спасать жизни. как проходили пилотные тестирования базового дохода? перестают ли люди работать? как базовый доход освобождает женщин из рабства и спасает от изнасилований? как он помогает исключить унижение из отошений государства и гражданина? почему с БД люди чувствуют себя стабильно лучше? и при чём тут композитор элвин люсье? SITTING IN A ROOM. I AM. — это иммерсивный опыт в дополненной реальности, который отвечает на все эти вопросы; прямо у вас в комнате. 
+          мы узнали всё, что нужно знать про базовый доход, и собрали несколько документальных историй о том, как ББД мог бы буквально спасать жизни. как проходили пилотные тестирования базового дохода? перестают ли люди работать? как базовый доход освобождает женщин из рабства и спасает от изнасилований? как он помогает исключить унижение из отношений государства и гражданина? почему с БД люди чувствуют себя стабильно лучше? и при чём тут композитор элвин люсье? SITTING IN A ROOM. I AM. — это иммерсивный опыт в дополненной реальности, который отвечает на все эти вопросы; прямо у вас в комнате. 
           <br /><br />
-          релиз в appstore и google play — до конца июня.
+          релиз в appstore и google play — до конца июля.
         </div>
 
         <div className="landing__content__credits">
@@ -135,14 +138,15 @@ export default class TextArea extends Component {
         >
           {slides.map(slide =>
             <div
-              className="anchor"
               id={slide}
+              key={slide}
+              className="anchor"
             />
           )}
         </div>
       </div>
 
-      <ControlsHelper />
+      {/* <ControlsHelper /> */}
 
       {this.state.currentSlide > 1 &&
         <Arrow

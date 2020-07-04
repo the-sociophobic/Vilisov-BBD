@@ -14,12 +14,16 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
 
+    const { amount } = queryString.parse(window.location.search)
+
     this.state = {
-      amount: queryString.parse(window.location.search).amount
+      amount: amount ? parseFloat(amount) : amount
     }
 
-    if (!this.state.amount)
+    if (!amount) //QUESTIONABLE: /Vilisov-BBD
       window.history.replaceState({}, document.title, "/ubi")
+    else
+      window.history.replaceState({}, document.title, `/ubi?amount=${this.state.amount + .5}`)
   }
 
   render = () =>
@@ -30,6 +34,6 @@ export default class App extends React.Component {
           <TextArea/>
         </>
         :
-        <OgImage amount={parseInt(this.state.amount)} />}
+        <OgImage amount={1} />}
     </Div100vh>
 }

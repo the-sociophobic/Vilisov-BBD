@@ -77,7 +77,7 @@ export default class Scene extends transitionHandler {
     if (!this.scene.renderer || !this.scene.camera)
       return
 
-    const optimise = W > 1200
+    // const optimise = W > 1200
 
     this.scene.camera.aspect = W / H
     this.scene.camera.updateProjectionMatrix()

@@ -8,11 +8,13 @@ const { get } = require('http')
 
 const htmlToImage = require('html-to-image')
 const afterLoad = require('after-load')
+const cors = require('cors')
 
 const { getScreenshot } = require('./getScreenshot')
 
 
 const app = express()
+app.use(cors())
 const port = 3030
 
 const promiseWriteFile = util.promisify(fs.writeFile)
@@ -37,8 +39,8 @@ const writeFile2 = async (fileName, html) => {
 app.get('/*', async (req, res) => {
 
   for (let i = 555; i <= 556; i++) {
-    afterLoad(`http://localhost:3000/?amount=${i}`, async html => {
-      const fixedHtml = html.replace(/src=\"\//gi, `src="http://localhost:3000/`)
+    afterLoad(`https://the-sociophobic.github.io/Vilisov-BBD/?amount=${i}`, async html => {
+      const fixedHtml = html.replace(/src=\"\//gi, `src="https://the-sociophobic.github.io/Vilisov-BBD/`)
       // console.log(fixedHtml)
       // console.log(fixedHtml)
       const fileLocalUrl = await writeFile2(i + ".html", fixedHtml)

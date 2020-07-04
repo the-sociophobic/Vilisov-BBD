@@ -1,7 +1,7 @@
 import React from 'react'
 
-import AppStore from 'img/app-store.png'
-import GooglePlay from 'img/google-play.png'
+// import AppStore from 'img/app-store.png'
+// import GooglePlay from 'img/google-play.png'
 
 
 export default props =>
@@ -15,6 +15,7 @@ export default props =>
           <iframe
             // width="560"
             // height="315"
+            title="video"
             src="https://www.youtube.com/embed/9UYSotyGXoM"
             frameborder="0"
             allow="accelerometer;

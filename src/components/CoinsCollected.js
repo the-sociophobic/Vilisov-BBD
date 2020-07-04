@@ -3,16 +3,9 @@ import ReactDOM from 'react-dom'
 
 import {
   TelegramShareButton,
-  TelegramIcon,
-
   VKShareButton,
-  VKIcon,
-
   FacebookShareButton,
-  FacebookIcon,
-
   TwitterShareButton,
-  TwitterIcon,
 } from 'react-share'
 
 import { coinCodes, maxCoins } from 'libs/utils/coinCodes'
@@ -40,31 +33,34 @@ export default class CoinsCollected extends React.Component {
           onClick={() => this.setState({showShare: false})}
         />
         <div className="coins-collected__share__panel">
-          share
           <div
-            className="coins-collected__share__panel__copy-field"
+            className="coins-collected__share__panel__h1"
             onClick={() => {
-              if (!this.state.copied)
-                setTimeout(() => this.setState({copied: false}), 3000)
-              this.setState({copied: true})
               copyToClipboard(url)
+              this.setState({copied: true})
+              setTimeout(() => this.setState({copied: false}), 2000)
             }}
           >
-            {this.state.copied ? "скопировано" : shortUrl}
+            {this.state.copied ? "скопировано" : "поделиться"}
           </div>
+          <img
+            className="coins-collected__share__panel__img"
+            alt={`og:image ${coinsCollected}.png`}
+            src={`https://apollonia.today/ubi/og-images/${coinsCollected}.png`}
+          />
           <div className="coins-collected__share__panel__social">
-            <TelegramShareButton url={url}>
-              <TelegramIcon size={32} />
-            </TelegramShareButton>
+            <TwitterShareButton url={shortUrl}>
+              t
+            </TwitterShareButton>
             <VKShareButton url={url}>
-              <VKIcon size={32} />
+              vk
             </VKShareButton>
             <FacebookShareButton url={url}>
-              <FacebookIcon size={32} />
+              fb
             </FacebookShareButton>
-            <TwitterShareButton url={shortUrl}>
-              <TwitterIcon size={32} />
-            </TwitterShareButton>
+            <TelegramShareButton url={url}>
+              tlg
+            </TelegramShareButton>
           </div>
         </div>
       </div>
@@ -84,7 +80,7 @@ export default class CoinsCollected extends React.Component {
         className="coins-collected__share-button"
         onClick={() => this.setState({showShare: true})}
       >
-        <img src={shareIcon} />
+        <img alt="share" src={shareIcon} />
       </button>
 
       {this.state.showShare &&

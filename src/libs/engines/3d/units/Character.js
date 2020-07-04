@@ -11,10 +11,10 @@ import footstep1 from 'sounds/footstep1.mp3'
 
 
 const ArenaRadius = 300
-const modelXOffset = 2
+const modelXOffset = 5
 const modelXOffsetTouch = .1
 const getModelOffset = () =>
-  isTouchDevice() ?
+  isTouchDevice() || window.innerWidth < 1200 ?
     modelXOffsetTouch : modelXOffset
 var modelOffset = new THREE.Vector3(getModelOffset(), 0, 0)
 const slowerAnimation = .1

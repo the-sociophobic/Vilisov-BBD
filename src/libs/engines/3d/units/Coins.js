@@ -34,23 +34,23 @@ export default class Coins extends transitionHandler {
       "💋🐸",
       "🧠👌🏻",
       "🛹👙",
-      "💻",
-      "🇮🇱",
+      "🇮🇱😈",
       "💜🌙",
       "🇷🇺⬆️",
       "🦊🛏",
       "🔞",
       "🥭",
-      "🏳️‍🌈",
+      "🏳️‍🌈🇪🇺",
       "👨‍👨‍👦📕",
       "🎨🙅🏻‍♀️",
       "😎👮🏾‍♂️",
       "🎤💩",
       "🥖",
-      "👑",
+      "👑😱",
       "🧬🏆",
       "🕹",
       "💡",
+      "🧅🏴‍☠️",
       "✊🏾🔥",
       "🦠🏡",
       "🐞🧝🏼‍♀",
@@ -58,6 +58,15 @@ export default class Coins extends transitionHandler {
       "🐖👃🏻",
       "🐍🚸",
       "⏳😬",
+      "✝️🤖",
+      "👨🏻‍🔬🍬",
+      "🚬💀",
+      "🍺💀",
+      "🦁💻",
+      "💸👩🏻‍🚀",
+      "📕🚫",
+      "👋🏻🌞",
+      "⚫️💊",
     ].map(text => {
       let sprite = new TextSprite({
         material: {
@@ -156,6 +165,8 @@ export default class Coins extends transitionHandler {
         case 2:
           dummy.rotation.z = (coin.index * 1000 + props.frameNumber * 100) / props.maxFrameNumber * Math.PI
           break
+        default:
+          ;
       }  
 
       dummy.updateMatrix()
