@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
 
-// const franeTime = 1500
-const franeTime = 2000
+const frameTime = 1500
 const shrinkTime = 300
 
 export default class TextArea extends Component {
@@ -18,7 +17,7 @@ export default class TextArea extends Component {
   componentDidMount = () =>
     this.changeWordInterval = setInterval(
       () => this.changeWord()
-      , franeTime)
+      , frameTime)
   componentWillUnmount = () =>
     clearInterval(this.changeWordInterval)
 

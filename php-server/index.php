@@ -27,11 +27,18 @@
   $header = substr($proxiedPage['content'], 0, strpos($proxiedPage['content'], '<noscript>'));
 
   include 'coinCodes.php';
-  $imageIndex = array_search($_SERVER['QUERY_STRING'], $coinCodes);
+  // $imageCode = $_SERVER['QUERY_STRING'];
+  $imageCode = explode("/", $_SERVER['HTTP_HOST']);
+  $imageCode = $imageCode[sizeof($imageCode) - 1];
+  $imageIndex = array_search($imageCode, $coinCodes);
   if ($imageIndex !== false) {
     $header = str_replace(
       'https://sun9-30.userapi.com/c858520/v858520632/1bfbc7/HLmNC4xFQPU.jpg',
       'https://apollonia.today/ubi/og-images/' . $imageIndex . '.png',
+      $header);
+    $header = str_replace(
+      'property="og:url" content="https://apollonia.today/ubi/"',
+      'property="og:url" content="https://apollonia.today/ubi/?"' . $_SERVER['QUERY_STRING'] . '/',
       $header);
   }
 

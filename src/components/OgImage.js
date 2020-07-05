@@ -31,7 +31,7 @@ export default class OgImage extends React.Component {
       })
     , generationOffset * 2)
 
-    // setTimeout(() => window.location.reload(), generationOffset * 4)
+    setTimeout(() => window.location.reload(), generationOffset * 4)
   }
   
   render = () => {

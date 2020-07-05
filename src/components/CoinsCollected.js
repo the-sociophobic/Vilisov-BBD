@@ -23,8 +23,9 @@ export default class CoinsCollected extends React.Component {
   renderSharePanel = () => {
     const coinsCollected = Math.min(this.props.number, maxCoins)
     const coinsCollectedCode = coinCodes[coinsCollected]
-    const url = `https://apollonia.today/ubi/?${coinsCollectedCode}`
-    const shortUrl = `apollonia.today/ubi/?${coinsCollectedCode}`
+    const url = `https://apollonia.today/ubi/share/${coinsCollectedCode}.html`
+    const urlVK = `https://apollonia.today/ubi/share/${coinsCollectedCode}`
+    const shortUrl = `apollonia.today/ubi/share/${coinsCollectedCode}.html`
 
     return (
       <div className="coins-collected__share">
@@ -52,7 +53,7 @@ export default class CoinsCollected extends React.Component {
             <TwitterShareButton url={shortUrl}>
               t
             </TwitterShareButton>
-            <VKShareButton url={url}>
+            <VKShareButton url={urlVK}>
               vk
             </VKShareButton>
             <FacebookShareButton url={url}>
@@ -68,25 +69,25 @@ export default class CoinsCollected extends React.Component {
   }
 
   render = () =>
-    <div className="coins-collected">
-
-      <div className="coins-collected__coin" />
-
-      <div className="coins-collected__number">
-        {this.props.number}
-      </div>
-
-      <button
-        className="coins-collected__share-button"
+    <>
+      <div
+        className="coins-collected"
         onClick={() => this.setState({showShare: true})}
       >
-        <img alt="share" src={shareIcon} />
-      </button>
+        <div className="coins-collected__coin" />
+
+        <div className="coins-collected__number">
+          {this.props.number}
+        </div>
+
+        <button className="coins-collected__share-button">
+          <img alt="share" src={shareIcon} />
+        </button>
+      </div>
 
       {this.state.showShare &&
         ReactDOM.createPortal(
           this.renderSharePanel(),
           document.body)}
-          
-    </div>
+    </>
 }
