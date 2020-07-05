@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d68c2ae86a2b3ef0e1f4963e684775da",
+    "revision": "208e97fc5edcfea520f63b271ac8d1b6",
     "url": "/Vilisov-BBD/index.html"
   },
   {
-    "revision": "660ce747731a897ee056",
+    "revision": "595f703913f36642e3ef",
     "url": "/Vilisov-BBD/static/css/main.cb0dc04f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Vilisov-BBD/static/js/2.d08338f6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "660ce747731a897ee056",
-    "url": "/Vilisov-BBD/static/js/main.927e7a6c.chunk.js"
+    "revision": "595f703913f36642e3ef",
+    "url": "/Vilisov-BBD/static/js/main.2dbaf570.chunk.js"
   },
   {
     "revision": "2cc1218f7b4b9ca76fbc",

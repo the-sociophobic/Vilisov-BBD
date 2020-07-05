@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Vilisov-BBD/static/css/main.cb0dc04f.chunk.css",
-    "main.js": "/Vilisov-BBD/static/js/main.927e7a6c.chunk.js",
-    "main.js.map": "/Vilisov-BBD/static/js/main.927e7a6c.chunk.js.map",
+    "main.js": "/Vilisov-BBD/static/js/main.2dbaf570.chunk.js",
+    "main.js.map": "/Vilisov-BBD/static/js/main.2dbaf570.chunk.js.map",
     "runtime-main.js": "/Vilisov-BBD/static/js/runtime-main.8bda50b5.js",
     "runtime-main.js.map": "/Vilisov-BBD/static/js/runtime-main.8bda50b5.js.map",
     "static/js/2.d08338f6.chunk.js": "/Vilisov-BBD/static/js/2.d08338f6.chunk.js",
     "static/js/2.d08338f6.chunk.js.map": "/Vilisov-BBD/static/js/2.d08338f6.chunk.js.map",
     "index.html": "/Vilisov-BBD/index.html",
-    "precache-manifest.433619e10035917f6c9a2fdf6d599cc8.js": "/Vilisov-BBD/precache-manifest.433619e10035917f6c9a2fdf6d599cc8.js",
+    "precache-manifest.5c333c8c6d8e8aa3980bb5907195287a.js": "/Vilisov-BBD/precache-manifest.5c333c8c6d8e8aa3980bb5907195287a.js",
     "service-worker.js": "/Vilisov-BBD/service-worker.js",
     "static/css/main.cb0dc04f.chunk.css.map": "/Vilisov-BBD/static/css/main.cb0dc04f.chunk.css.map",
     "static/js/2.d08338f6.chunk.js.LICENSE.txt": "/Vilisov-BBD/static/js/2.d08338f6.chunk.js.LICENSE.txt",
@@ -30,6 +30,6 @@
     "static/js/runtime-main.8bda50b5.js",
     "static/js/2.d08338f6.chunk.js",
     "static/css/main.cb0dc04f.chunk.css",
-    "static/js/main.927e7a6c.chunk.js"
+    "static/js/main.2dbaf570.chunk.js"
   ]
 }
