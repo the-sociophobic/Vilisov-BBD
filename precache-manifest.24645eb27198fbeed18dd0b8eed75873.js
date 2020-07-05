@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7fe2fe6cc6417fcf241cd8c21d61ec3a",
+    "revision": "1d41f60b129c7393cf1cc5bb6683bced",
     "url": "/Vilisov-BBD/index.html"
   },
   {
-    "revision": "08f7dd024e1ee750fc13",
-    "url": "/Vilisov-BBD/static/css/main.cb0dc04f.chunk.css"
+    "revision": "c287baeceed2532e9957",
+    "url": "/Vilisov-BBD/static/css/main.ba14ba3e.chunk.css"
   },
   {
-    "revision": "81ef2db32ad73640c4a6",
-    "url": "/Vilisov-BBD/static/js/2.05062805.chunk.js"
+    "revision": "2b9ec1776afe666c9cb6",
+    "url": "/Vilisov-BBD/static/js/2.a0c4ae92.chunk.js"
   },
   {
     "revision": "d9df0340d2886199389a5ea29ce68cea",
-    "url": "/Vilisov-BBD/static/js/2.05062805.chunk.js.LICENSE.txt"
+    "url": "/Vilisov-BBD/static/js/2.a0c4ae92.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "08f7dd024e1ee750fc13",
-    "url": "/Vilisov-BBD/static/js/main.9db1e42b.chunk.js"
+    "revision": "c287baeceed2532e9957",
+    "url": "/Vilisov-BBD/static/js/main.a9240f9c.chunk.js"
   },
   {
     "revision": "2cc1218f7b4b9ca76fbc",
@@ -62,6 +62,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "e8a0d624918e10153d03e580a98571a8",
     "url": "/Vilisov-BBD/static/media/coin.e8a0d624.glb"
+  },
+  {
+    "revision": "e9959680edeec8a957db5cb50fabdbf4",
+    "url": "/Vilisov-BBD/static/media/copy.e9959680.svg"
   },
   {
     "revision": "81acdc76dcf09a1bc02fe2e04f38234d",
