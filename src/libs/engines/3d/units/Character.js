@@ -147,11 +147,19 @@ export default class Character extends Unit {
         :
         (Math.PI - props.input.move.angleTo(zAxis)) / 150 * Math.sign(props.input.move.x)
 
-    if (!isTouchDevice())
+    if (!isTouchDevice()) {
+      if (props.input.move.x != 0 
+        || props.input.move.y != 0 
+        || props.input.move.z != 0) {
+        cameraAngleX += props.input.mouse.alphaX * 0.075
+      } else {
+        cameraAngleX += props.input.mouse.alphaX * 0.025
+      }
       cameraAngleConrolsApplied.set(
         props.input.mouse.alphaX * Math.PI * 1.5 + cameraAngleX,
         props.input.mouse.alphaY * Math.PI / 12
       )
+    }
     else
       cameraAngleConrolsApplied.set(cameraAngleX, Math.PI / 16)
 
