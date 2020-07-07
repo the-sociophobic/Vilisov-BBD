@@ -53,9 +53,9 @@ export default class CoinsCollected extends React.Component {
             <TwitterShareButton url={shortUrl}>
               t
             </TwitterShareButton>
-            <VKShareButton url={urlVK}>
+            {/* <VKShareButton url={urlVK}>
               vk
-            </VKShareButton>
+            </VKShareButton> */}
             <FacebookShareButton url={url}>
               fb
             </FacebookShareButton>
