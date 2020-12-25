@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "087709a58c0c62ec160613e4a7effb88",
+    "revision": "8d8de653a0e642dbacb528abd4df02a5",
     "url": "/Vilisov-BBD/index.html"
   },
   {
-    "revision": "130561b3553560ed24bb",
-    "url": "/Vilisov-BBD/static/css/main.ba14ba3e.chunk.css"
+    "revision": "cd45c68856a46a25a44d",
+    "url": "/Vilisov-BBD/static/css/main.821ab550.chunk.css"
   },
   {
-    "revision": "5a539bf3f27065356961",
-    "url": "/Vilisov-BBD/static/js/2.9f8a4bb6.chunk.js"
+    "revision": "4bc2ebdcd2a3990b7f0c",
+    "url": "/Vilisov-BBD/static/js/2.a41f20df.chunk.js"
   },
   {
-    "revision": "d9df0340d2886199389a5ea29ce68cea",
-    "url": "/Vilisov-BBD/static/js/2.9f8a4bb6.chunk.js.LICENSE.txt"
+    "revision": "3a2ea33e8a131b8b33cb161570e8658e",
+    "url": "/Vilisov-BBD/static/js/2.a41f20df.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "130561b3553560ed24bb",
-    "url": "/Vilisov-BBD/static/js/main.dee2ce84.chunk.js"
+    "revision": "cd45c68856a46a25a44d",
+    "url": "/Vilisov-BBD/static/js/main.bc4fb380.chunk.js"
   },
   {
-    "revision": "2cc1218f7b4b9ca76fbc",
-    "url": "/Vilisov-BBD/static/js/runtime-main.8bda50b5.js"
+    "revision": "96b3f27189aabded3c76",
+    "url": "/Vilisov-BBD/static/js/runtime-main.14a71f26.js"
   },
   {
     "revision": "ac9701ba357c298bb34b778abf639644",
@@ -48,8 +48,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Vilisov-BBD/static/media/Woman.c9ed6341.glb"
   },
   {
-    "revision": "d388a3f20bd6efd65d3f7deff60466cf",
-    "url": "/Vilisov-BBD/static/media/app-store.d388a3f2.png"
+    "revision": "bb9af37ca8b6d5d8d3fa3f19a01602bf",
+    "url": "/Vilisov-BBD/static/media/app-store.bb9af37c.svg"
   },
   {
     "revision": "3c316576ec8769bad1decee8c72dbf01",
@@ -76,8 +76,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Vilisov-BBD/static/media/footstep1.2b680b02.mp3"
   },
   {
-    "revision": "ef5c7ffdedb3a69ee6d10db40c3a955f",
-    "url": "/Vilisov-BBD/static/media/google-play.ef5c7ffd.png"
+    "revision": "271575aeba5e18ea3a1727cf613fdcf8",
+    "url": "/Vilisov-BBD/static/media/google-play.271575ae.png"
   },
   {
     "revision": "021a61e503f1289e478fee60d0e87d29",
