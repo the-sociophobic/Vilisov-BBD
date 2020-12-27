@@ -1,6 +1,6 @@
 import React from 'react'
 
-import htmlToImage from 'html-to-image'
+import * as htmlToImage from 'html-to-image'
 import download from 'downloadjs'
 
 import countable from 'libs/utils/countable'

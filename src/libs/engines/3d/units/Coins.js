@@ -14,6 +14,7 @@ const finalScale = new THREE.Vector3(.1, .1, .1)
 var dummy = new THREE.Object3D()
 var charachterPos = new THREE.Vector3()
 
+const charScaleK = 1.025
 
 const coinInitialPos = () =>
   new THREE.Vector3(
@@ -134,7 +135,7 @@ export default class Coins extends transitionHandler {
       //COLLISION
       const distance = coin.position.distanceTo(charachterPos)
 
-      if (distance < 5) {
+      if (distance < 5 * (charScaleK ** props.react.coins)) {
         var shownSprite = this.sprites[Math.round(Math.random() * (this.sprites.length - 1))]
         shownSprite.position.copy(charachterPos)
         shownSprite.position.setY(shownSprite.position.y + 4)
@@ -150,6 +151,8 @@ export default class Coins extends transitionHandler {
         this.emmitCoin(coin)
 
         props.react.addCoin()
+
+        props.units.Character.model.scale.multiplyScalar(charScaleK)
       }
 
       //FALL AND ROTATION

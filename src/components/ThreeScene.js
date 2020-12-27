@@ -30,7 +30,8 @@ export default class ThreeScene extends Component {
 
     this.scene = new Scene({
       react: {
-        addCoin: () => this.setState({coinsCollected: this.state.coinsCollected + 1})
+        addCoin: () => this.setState({coinsCollected: this.state.coinsCollected + 1}),
+        coins: this.state.coinsCollected,
       },
       units: {
         Character: {

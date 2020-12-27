@@ -44,12 +44,12 @@ body
     display: none
 
 .noselect
-  -webkit-touch-callout: none;  /* iOS Safari */
-  -webkit-user-select: none;    /* Safari */
-  -khtml-user-select: none;     /* Konqueror HTML */
-  -moz-user-select: none;       /* Firefox */
-  -ms-user-select: none;        /* Internet Explorer/Edge */
-  user-select: none;            /* Non-prefixed version, currently supported by Chrome and Opera */
+  -webkit-touch-callout: none  /* iOS Safari */
+  -webkit-user-select: none    /* Safari */
+  -khtml-user-select: none     /* Konqueror HTML */
+  -moz-user-select: none       /* Firefox */
+  -ms-user-select: none        /* Internet Explorer/Edge */
+  user-select: none            /* Non-prefixed version, currently supported by Chrome and Opera */
 
 .button
   padding: 0
@@ -520,19 +520,19 @@ body
 .download-links
   left: 50%
   transform: translateX(-50%) 
-  width: 12vw
-  min-width: 300px
+  width: 20vw
+  min-width: 400px
   z-index: 10000
   transition: left $slide-transition
   position: fixed
   bottom: 25px
   @media screen and ( max-width: $breakpoint-1024 )
     position: relative
-    min-width: 150px
-    margin-top: 5.5vh
+    min-width: 200px
+    margin-top: 6.5vh
   &__width-container
     width: 100%
-    padding-top: 16.6%
+    padding-top: 14%
     &__abs-container
       position: absolute
       width: 100%
@@ -541,7 +541,11 @@ body
       left: 0
       display: flex
       flex-direction: row
-      justify-content: space-between
+      justify-content: space-around
+      a
+        overflow: visible
+        display: block
+        width: 45%
       img
         height: 100%
         width: auto 
@@ -814,7 +818,7 @@ $word-changer-transition: .3s
 
 .sound-alert
   position: fixed
-  top: 50vh
+  top: 70vh
   left: 50vw
   transform: translate(-50%, -50%)
   // width: 120px
