@@ -8709,9 +8709,9 @@ punycode@^2.1.0, punycode@^2.1.1:
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
 putil-merge@^3.5.1:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/putil-merge/-/putil-merge-3.6.2.tgz#743386e329553c23353cda75c8d899ae6eb0c764"
-  integrity sha512-BOEhul1cp39lMFHhXtXZ7A8aVn3NhhckAcDDxGPKxpIagxtTg6Jc2eeAWZrkUC2vhZwUmKr6E8ZgpcecqJMVTQ==
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/putil-merge/-/putil-merge-3.7.0.tgz#b3b1c9539ddf28e12e085f1095d647b69e3b1cd7"
+  integrity sha512-FlTQmWcH0MF8V5RR8FpaK+andapu4aBbBbGVubeeO0Kn3I9WTFSfL1aKg6PhpkJBPXA3r1z2+cLdt3SoUjTWTw==
 
 q@^1.1.2:
   version "1.5.1"
